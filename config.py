@@ -5,17 +5,17 @@ load_dotenv()
 
 class Config:
     # Shopify Configuration
-    SHOP_URL = "k7bseq-qf.myshopify.com"
-    ACCESS_TOKEN = "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"
-    API_VERSION = "2024-04"
+    SHOP_URL = os.environ.get('SHOPIFY_SHOP_URL')
+    ACCESS_TOKEN = os.environ.get('SHOPIFY_ACCESS_TOKEN')
+    API_VERSION = os.environ.get('SHOPIFY_API_VERSION', '2024-04')
     SHOPIFY_BASE_URL = f"https://{SHOP_URL}/admin/api/{API_VERSION}"
     
     # Gemini Configuration
-    GEMINI_API_KEY = "AIzaSyArQknln_YjGGcFBEXoUPqDone7FM7uFsg"
+    GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
     
     # Flask Configuration
-    SECRET_KEY = os.urandom(24)
-    DEBUG = True
+    SECRET_KEY = os.environ.get('FLASK_SECRET_KEY', os.urandom(24))
+    DEBUG = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
 
     HEADERS = {
         'X-Shopify-Access-Token': ACCESS_TOKEN,
@@ -23,8 +23,8 @@ class Config:
     }
 
     # Supabase Configuration
-    SUPABASE_URL = "https://qszwxkazjxjfqosyoqvq.supabase.co"
-    SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzend4a2F6anhqZnFvc3lvcXZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc4MzE0NjYsImV4cCI6MjA1MzQwNzQ2Nn0.ogoi4MlkTQh4yQ50ilWxFlPpIhEIVte237nVEUrtrZk"
+    SUPABASE_URL = os.environ.get('SUPABASE_URL')
+    SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
     
     # Session Configuration
     SESSION_TYPE = 'filesystem'
