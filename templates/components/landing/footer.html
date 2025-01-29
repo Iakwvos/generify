@@ -1,0 +1,189 @@
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+            <!-- Generify -->
+            <div>
+                <h3 class="text-xl font-bold mb-6 text-primary">Generify</h3>
+                <ul class="space-y-3">
+                    <li>
+                        <a href="/#features" 
+                           class="text-gray-400 hover:text-primary transition-colors duration-200 flex items-center group">
+                            <span class="relative inline-block">
+                                Features
+                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+                            </span>
+                            <i class="fas fa-chevron-right ml-2 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#how-it-works" 
+                           class="text-gray-400 hover:text-primary transition-colors duration-200 flex items-center group">
+                            <span class="relative inline-block">
+                                How It Works
+                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+                            </span>
+                            <i class="fas fa-chevron-right ml-2 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#testimonials" 
+                           class="text-gray-400 hover:text-primary transition-colors duration-200 flex items-center group">
+                            <span class="relative inline-block">
+                                Testimonials
+                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+                            </span>
+                            <i class="fas fa-chevron-right ml-2 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#pricing" 
+                           class="text-gray-400 hover:text-primary transition-colors duration-200 flex items-center group">
+                            <span class="relative inline-block">
+                                Pricing
+                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+                            </span>
+                            <i class="fas fa-chevron-right ml-2 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Product -->
+            <div>
+                <h3 class="text-xl font-bold mb-6 text-primary">Product</h3>
+                <ul class="space-y-3">
+                    <li>
+                        <a href="{{ url_for('main.support', page='help') }}" 
+                           class="text-gray-400 hover:text-primary transition-colors duration-200 flex items-center group">
+                            <span class="relative inline-block">
+                                Help Center
+                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+                            </span>
+                            <i class="fas fa-chevron-right ml-2 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.support', page='status') }}" 
+                           class="text-gray-400 hover:text-primary transition-colors duration-200 flex items-center group">
+                            <span class="relative inline-block">
+                                System Status
+                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+                            </span>
+                            <i class="fas fa-chevron-right ml-2 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard" 
+                           class="text-gray-400 hover:text-primary transition-colors duration-200 flex items-center group">
+                            <span class="relative inline-block">
+                                Dashboard
+                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+                            </span>
+                            <i class="fas fa-chevron-right ml-2 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Company -->
+            <div>
+                <h3 class="text-xl font-bold mb-6 text-primary">Company</h3>
+                <ul class="space-y-3">
+                    <li>
+                        <a href="{{ url_for('main.legal', page='privacy') }}" 
+                           class="text-gray-400 hover:text-primary transition-colors duration-200 flex items-center group">
+                            <span class="relative inline-block">
+                                Privacy Policy
+                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+                            </span>
+                            <i class="fas fa-chevron-right ml-2 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.legal', page='terms') }}" 
+                           class="text-gray-400 hover:text-primary transition-colors duration-200 flex items-center group">
+                            <span class="relative inline-block">
+                                Terms of Service
+                                <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
+                            </span>
+                            <i class="fas fa-chevron-right ml-2 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Connect -->
+            <div>
+                <h3 class="text-xl font-bold mb-6 text-primary">Connect</h3>
+                <div class="flex space-x-6">
+                    <a href="https://twitter.com/generify" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="text-gray-400 hover:text-primary transition-colors duration-200 transform hover:scale-110">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/company/generify" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="text-gray-400 hover:text-primary transition-colors duration-200 transform hover:scale-110">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/generify" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="text-gray-400 hover:text-primary transition-colors duration-200 transform hover:scale-110">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
+            <p>&copy; 2024 Generify. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer-link {
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .footer-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: var(--primary);
+        transition: width 0.3s ease;
+    }
+    
+    .footer-link:hover::after {
+        width: 100%;
+    }
+</style>
+
+<script>
+// Handle smooth scrolling for footer links
+document.querySelectorAll('a[href^="/#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(2);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            if (window.location.pathname === '/') {
+                // On landing page, scroll smoothly
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // On other pages, redirect to landing page with hash
+                window.location.href = `/${targetId}`;
+            }
+        }
+    });
+});
+</script> 

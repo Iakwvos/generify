@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - Shopify Dashboard{% endblock %}
+
+{% block page_css %}
+<link href="{{ url_for('static', filename='css/pages/settings.css') }}" rel="stylesheet">
+<style>
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #4a5568;
+        transition: .4s;
+        border-radius: 34px;
+    }
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+    input:checked + .slider {
+        background-color: var(--primary);
+    }
+    input:checked + .slider:before {
+        transform: translateX(26px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-8">Settings</h1>
+
+<!-- API Configuration -->
+<div class="card p-6 mb-8">
+    <h2 class="text-xl font-bold mb-6">API Configuration</h2>
+    <form id="apiForm" class="space-y-6">
+        <div>
+            <label class="block text-sm font-medium mb-2" for="shopifyUrl">
+                Shopify Store URL
+            </label>
+            <input type="text" id="shopifyUrl" name="shopifyUrl" 
+                   class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                   value="{{ settings.shopify_url if settings.shopify_url else '' }}"
+                   placeholder="your-store.myshopify.com">
+        </div>
+        <div>
+            <label class="block text-sm font-medium mb-2" for="apiKey">
+                API Key
+            </label>
+            <input type="password" id="apiKey" name="apiKey" 
+                   class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                   value="{{ settings.api_key if settings.api_key else '' }}"
+                   placeholder="Enter your API key">
+        </div>
+        <div>
+            <label class="block text-sm font-medium mb-2" for="apiSecret">
+                API Secret
+            </label>
+            <input type="password" id="apiSecret" name="apiSecret" 
+                   class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                   value="{{ settings.api_secret if settings.api_secret else '' }}"
+                   placeholder="Enter your API secret">
+        </div>
+        <button type="submit" 
+                class="px-6 py-2 bg-primary text-gray-900 font-medium rounded-lg hover:bg-opacity-90 transition-colors">
+            Save API Settings
+        </button>
+    </form>
+</div>
+
+<!-- Notification Settings -->
+<div class="card p-6 mb-8">
+    <h2 class="text-xl font-bold mb-6">Notification Settings</h2>
+    <div class="space-y-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h3 class="font-medium">Email Notifications</h3>
+                <p class="text-sm text-gray-400">Receive email notifications for important updates</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="emailNotifications" 
+                       {{ 'checked' if settings.email_notifications else '' }}>
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="flex items-center justify-between">
+            <div>
+                <h3 class="font-medium">Order Alerts</h3>
+                <p class="text-sm text-gray-400">Get notified when new orders are placed</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="orderAlerts"
+                       {{ 'checked' if settings.order_alerts else '' }}>
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="flex items-center justify-between">
+            <div>
+                <h3 class="font-medium">Low Stock Alerts</h3>
+                <p class="text-sm text-gray-400">Receive alerts when product stock is low</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="stockAlerts"
+                       {{ 'checked' if settings.stock_alerts else '' }}>
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- Display Settings -->
+<div class="card p-6">
+    <h2 class="text-xl font-bold mb-6">Display Settings</h2>
+    <div class="space-y-6">
+        <div>
+            <label class="block text-sm font-medium mb-2" for="currency">
+                Currency Display
+            </label>
+            <select id="currency" name="currency" 
+                    class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                <option value="USD" {{ 'selected' if settings.currency == 'USD' else '' }}>USD ($)</option>
+                <option value="EUR" {{ 'selected' if settings.currency == 'EUR' else '' }}>EUR (€)</option>
+                <option value="GBP" {{ 'selected' if settings.currency == 'GBP' else '' }}>GBP (£)</option>
+                <option value="CAD" {{ 'selected' if settings.currency == 'CAD' else '' }}>CAD ($)</option>
+                <option value="AUD" {{ 'selected' if settings.currency == 'AUD' else '' }}>AUD ($)</option>
+            </select>
+        </div>
+        <div>
+            <label class="block text-sm font-medium mb-2" for="timezone">
+                Timezone
+            </label>
+            <select id="timezone" name="timezone" 
+                    class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                <option value="UTC" {{ 'selected' if settings.timezone == 'UTC' else '' }}>UTC</option>
+                <option value="EST" {{ 'selected' if settings.timezone == 'EST' else '' }}>Eastern Time</option>
+                <option value="CST" {{ 'selected' if settings.timezone == 'CST' else '' }}>Central Time</option>
+                <option value="MST" {{ 'selected' if settings.timezone == 'MST' else '' }}>Mountain Time</option>
+                <option value="PST" {{ 'selected' if settings.timezone == 'PST' else '' }}>Pacific Time</option>
+            </select>
+        </div>
+        <div class="flex items-center justify-between">
+            <div>
+                <h3 class="font-medium">Dark Mode</h3>
+                <p class="text-sm text-gray-400">Enable dark mode for the dashboard</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="darkMode"
+                       {{ 'checked' if settings.dark_mode else '' }}>
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %} 

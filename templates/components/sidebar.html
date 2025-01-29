@@ -1,0 +1,20 @@
+<!-- Sidebar Component -->
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <h1 class="sidebar-title">Shopify Dashboard</h1>
+    </div>
+    <nav>
+        <a href="{{ url_for('pages.dashboard') }}" class="nav-item {% if active_page == 'dashboard' %}active{% endif %}">
+            <i class="fas fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+        <a href="{{ url_for('pages.analytics') }}" class="nav-item {% if active_page == 'analytics' %}active{% endif %}">
+            <i class="fas fa-chart-bar"></i>
+            <span>Analytics</span>
+        </a>
+        <a href="{{ url_for('pages.settings') }}" class="nav-item {% if active_page == 'settings' %}active{% endif %}">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+        </a>
+    </nav>
+</aside> 

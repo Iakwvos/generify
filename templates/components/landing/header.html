@@ -1,0 +1,101 @@
+<!-- Header -->
+<header class="fixed w-full z-50 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800">
+    <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between h-20">
+            <!-- Logo -->
+            <a href="/" class="flex items-center space-x-2">
+                <span class="text-2xl font-bold text-white">Generify</span>
+            </a>
+            
+            <!-- Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="/#features" class="text-gray-300 hover:text-white transition-colors">Features</a>
+                <a href="/#how-it-works" class="text-gray-300 hover:text-white transition-colors">How It Works</a>
+                <a href="/#pricing" class="text-gray-300 hover:text-white transition-colors">Pricing</a>
+            </nav>
+            
+            <!-- Auth Buttons -->
+            <div class="flex items-center space-x-4">
+                {% if session.get('user') %}
+                    <a href="{{ url_for('main.dashboard') }}" 
+                       class="px-6 py-2.5 bg-primary text-gray-900 rounded-lg font-medium hover:bg-primary-dark transition-colors transform hover:scale-105">
+                        Dashboard
+                    </a>
+                    <form action="{{ url_for('auth.logout') }}" method="GET" class="inline">
+                        <button type="submit" 
+                                class="px-6 py-2.5 border border-gray-600 text-gray-300 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                            Sign Out
+                        </button>
+                    </form>
+                {% else %}
+                    <button onclick="openAuthModal('login')" 
+                            class="px-6 py-2.5 border border-gray-600 text-gray-300 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                        Log In
+                    </button>
+                    <button onclick="openAuthModal('signup')" 
+                            class="px-6 py-2.5 bg-primary text-gray-900 rounded-lg font-medium hover:bg-primary-dark transition-colors transform hover:scale-105">
+                        Sign Up
+                    </button>
+                {% endif %}
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-gray-300 hover:text-white" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="space-y-4">
+                <a href="/#features" class="block text-gray-300 hover:text-white transition-colors">Features</a>
+                <a href="/#how-it-works" class="block text-gray-300 hover:text-white transition-colors">How It Works</a>
+                <a href="/#pricing" class="block text-gray-300 hover:text-white transition-colors">Pricing</a>
+                
+                {% if session.get('user') %}
+                    <a href="{{ url_for('main.dashboard') }}" class="block text-primary hover:text-primary-dark transition-colors">Dashboard</a>
+                    <form action="{{ url_for('auth.logout') }}" method="GET">
+                        <button type="submit" class="text-gray-300 hover:text-white transition-colors">Sign Out</button>
+                    </form>
+                {% else %}
+                    <button onclick="openAuthModal('login')" class="block text-gray-300 hover:text-white transition-colors">Log In</button>
+                    <button onclick="openAuthModal('signup')" class="block text-primary hover:text-primary-dark transition-colors">Sign Up</button>
+                {% endif %}
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- Include Auth Modal -->
+{% include 'components/auth/modal.html' %}
+
+<script>
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuButton = document.querySelector('.md\\:hidden');
+    
+    if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+    }
+});
+
+// Update CTA buttons to open auth modal
+document.addEventListener('DOMContentLoaded', () => {
+    const ctaButtons = document.querySelectorAll('[data-auth-action]');
+    ctaButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const action = button.dataset.authAction || 'signup';
+            openAuthModal(action);
+        });
+    });
+});
+</script> 

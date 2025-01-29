@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Shopify Dashboard{% endblock %}
+
+{% block page_css %}
+<link href="{{ url_for('static', filename='css/pages/index.css') }}" rel="stylesheet">
+<style>
+    .grid-item {
+        border: 1px solid #4a5568;
+    }
+    .btn-primary {
+        @apply py-2 px-4 bg-primary hover:bg-primary-dark text-secondary rounded-lg transition-colors duration-200 
+               flex items-center justify-center text-sm font-medium;
+    }
+    .btn-secondary {
+        @apply py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200 
+               flex items-center justify-center text-sm font-medium;
+    }
+    .btn-danger {
+        @apply py-2 px-4 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200 
+               flex items-center justify-center text-sm font-medium;
+    }
+    .product-card {
+        @apply flex flex-col h-full;
+    }
+    .product-image, .product-placeholder {
+        height: 240px;
+        object-fit: cover;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Welcome Section -->
+<div class="text-center py-12">
+    <h1 class="text-4xl font-bold mb-4">Welcome to Shopify Dashboard</h1>
+    <p class="text-gray-400 mb-8">Get started by connecting your Shopify store</p>
+    <a href="{{ url_for('pages.settings') }}" class="btn-primary inline-flex">
+        <i class="fas fa-plug mr-2"></i>
+        Connect Store
+    </a>
+</div>
+
+<!-- Features Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+    <div class="card p-6">
+        <i class="fas fa-chart-line text-4xl text-primary mb-4"></i>
+        <h3 class="text-xl font-bold mb-2">Analytics</h3>
+        <p class="text-gray-400">Track your store's performance with detailed analytics and insights</p>
+    </div>
+    <div class="card p-6">
+        <i class="fas fa-magic text-4xl text-primary mb-4"></i>
+        <h3 class="text-xl font-bold mb-2">AI Powered</h3>
+        <p class="text-gray-400">Get intelligent suggestions and automation powered by AI</p>
+    </div>
+    <div class="card p-6">
+        <i class="fas fa-paint-brush text-4xl text-primary mb-4"></i>
+        <h3 class="text-xl font-bold mb-2">Theme Management</h3>
+        <p class="text-gray-400">Easily manage and customize your store's appearance</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %} 

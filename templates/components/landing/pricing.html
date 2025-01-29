@@ -1,0 +1,336 @@
+<!-- Pricing Section -->
+<section id="pricing" class="py-32 bg-gray-800/50">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Simple, Transparent Pricing
+            </h2>
+            <p class="text-xl text-gray-400">
+                Choose the perfect plan for your business needs. No hidden fees, cancel anytime.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Starter Plan -->
+            <div class="pricing-card group relative p-8 bg-gray-900/50 rounded-2xl hover:bg-gray-900 transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
+                <!-- Popular Badge -->
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-gray-900 px-4 py-1 rounded-full text-sm font-medium hidden group-hover:block transition-opacity">
+                    Most Popular
+                </div>
+                
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold mb-4">Starter</h3>
+                    <div class="flex items-center justify-center mb-4">
+                        <span class="text-4xl font-bold">$29</span>
+                        <span class="text-gray-400 ml-2">/month</span>
+                    </div>
+                    <p class="text-gray-400">Perfect for small stores</p>
+                </div>
+                
+                <ul class="space-y-4 mb-8 flex-grow">
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Up to 100 products
+                    </li>
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Basic AI content generation
+                    </li>
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Standard analytics
+                    </li>
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Email support
+                    </li>
+                </ul>
+                
+                {% if session.get('user') %}
+                    <a href="{{ url_for('main.dashboard') }}" class="block w-full py-3 px-6 text-center bg-primary text-gray-900 rounded-lg font-medium hover:bg-opacity-90 transition-colors mt-auto">
+                        Go to Dashboard
+                    </a>
+                {% else %}
+                    <button onclick="openAuthModal('signup')" class="block w-full py-3 px-6 text-center bg-primary text-gray-900 rounded-lg font-medium hover:bg-opacity-90 transition-colors mt-auto">
+                        Get Started
+                    </button>
+                {% endif %}
+            </div>
+            
+            <!-- Professional Plan -->
+            <div class="pricing-card group relative p-8 bg-gray-900/50 rounded-2xl hover:bg-gray-900 transition-all duration-300 transform hover:-translate-y-2 border-2 border-primary flex flex-col h-full">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-gray-900 px-4 py-1 rounded-full text-sm font-medium">
+                    Most Popular
+                </div>
+                
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold mb-4">Professional</h3>
+                    <div class="flex items-center justify-center mb-4">
+                        <span class="text-4xl font-bold">$79</span>
+                        <span class="text-gray-400 ml-2">/month</span>
+                    </div>
+                    <p class="text-gray-400">For growing businesses</p>
+                </div>
+                
+                <ul class="space-y-4 mb-8 flex-grow">
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Unlimited products
+                    </li>
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Advanced AI features
+                    </li>
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Advanced analytics
+                    </li>
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Priority support
+                    </li>
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Custom templates
+                    </li>
+                </ul>
+                
+                {% if session.get('user') %}
+                    <a href="{{ url_for('main.dashboard') }}" class="block w-full py-3 px-6 text-center bg-primary text-gray-900 rounded-lg font-medium hover:bg-opacity-90 transition-colors mt-auto">
+                        Go to Dashboard
+                    </a>
+                {% else %}
+                    <button onclick="openAuthModal('signup')" class="block w-full py-3 px-6 text-center bg-primary text-gray-900 rounded-lg font-medium hover:bg-opacity-90 transition-colors mt-auto">
+                        Get Started
+                    </button>
+                {% endif %}
+            </div>
+            
+            <!-- Enterprise Plan -->
+            <div class="pricing-card group relative p-8 bg-gray-900/50 rounded-2xl hover:bg-gray-900 transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold mb-4">Enterprise</h3>
+                    <div class="flex items-center justify-center mb-4">
+                        <span class="text-4xl font-bold">Custom</span>
+                    </div>
+                    <p class="text-gray-400">For large organizations</p>
+                </div>
+                
+                <ul class="space-y-4 mb-8 flex-grow">
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Everything in Professional
+                    </li>
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Custom AI training
+                    </li>
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Dedicated account manager
+                    </li>
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        24/7 phone support
+                    </li>
+                    <li class="flex items-center text-gray-400">
+                        <i class="fas fa-check text-primary mr-2"></i>
+                        Custom integration
+                    </li>
+                </ul>
+                
+                {% if session.get('user') %}
+                    <a href="{{ url_for('main.dashboard') }}" class="block w-full py-3 px-6 text-center bg-gray-700 text-white rounded-lg font-medium hover:bg-gray-600 transition-colors mt-auto">
+                        Contact Sales
+                    </a>
+                {% else %}
+                    <button onclick="openAuthModal('signup')" class="block w-full py-3 px-6 text-center bg-gray-700 text-white rounded-lg font-medium hover:bg-gray-600 transition-colors mt-auto">
+                        Contact Sales
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- FAQ -->
+        <div class="mt-24">
+            <h3 class="text-2xl font-bold text-center mb-12">Frequently Asked Questions</h3>
+            
+            <!-- FAQ Categories -->
+            <div class="space-y-6 max-w-4xl mx-auto">
+                <!-- Getting Started -->
+                <div class="faq-category">
+                    <h4 class="text-xl font-bold mb-4 text-primary">Getting Started</h4>
+                    <div class="space-y-4">
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">Can I change plans later?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate your billing.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">Is there a free trial?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                Yes, all plans come with a 14-day free trial. No credit card required. Test all features risk-free.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">How long does setup take?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                Setup typically takes less than 5 minutes. Just connect your Shopify store, and you're ready to start using all features.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Billing & Pricing -->
+                <div class="faq-category">
+                    <h4 class="text-xl font-bold mb-4 text-primary">Billing & Pricing</h4>
+                    <div class="space-y-4">
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">What payment methods do you accept?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and bank transfers for Enterprise plans.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">Can I cancel anytime?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                Yes, you can cancel your subscription at any time with no questions asked. No long-term contracts or hidden fees.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">Do you offer refunds?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                Yes, we offer a 30-day money-back guarantee if you're not satisfied with our service.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features & Functionality -->
+                <div class="faq-category">
+                    <h4 class="text-xl font-bold mb-4 text-primary">Features & Functionality</h4>
+                    <div class="space-y-4">
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">How does the AI content generation work?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                Our AI analyzes your products and brand voice to generate SEO-optimized descriptions, titles, and marketing copy that matches your style.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">Do you offer multi-language support?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                Yes, our AI can generate content in multiple languages. Professional and Enterprise plans include advanced language customization.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">Can I customize the AI's output?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                Yes, you can set tone preferences, keywords, and style guidelines. The AI learns from your edits to improve future content.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security & Support -->
+                <div class="faq-category">
+                    <h4 class="text-xl font-bold mb-4 text-primary">Security & Support</h4>
+                    <div class="space-y-4">
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">What kind of support do you provide?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                Starter plans include email support. Professional plans get priority support, while Enterprise plans receive 24/7 phone support and a dedicated account manager.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">Is my data secure?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                Yes, we use industry-standard encryption and security measures. Your data is stored securely and never shared with third parties.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item bg-gray-900/50 rounded-xl overflow-hidden">
+                            <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-900/50 transition-colors">
+                                <span class="font-bold">Do you have a status page?</span>
+                                <i class="fas fa-chevron-down transform transition-transform"></i>
+                            </button>
+                            <div class="faq-answer px-6 py-4 text-gray-400 hidden">
+                                Yes, we maintain a public status page where you can check our system's uptime and any ongoing incidents.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add JavaScript for FAQ dropdowns -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const button = item.querySelector('button');
+            const answer = item.querySelector('.faq-answer');
+            const icon = item.querySelector('i');
+            
+            button.addEventListener('click', () => {
+                const isOpen = answer.classList.contains('hidden');
+                
+                // Close all other answers
+                document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+                document.querySelectorAll('.faq-item i').forEach(i => i.style.transform = '');
+                
+                // Toggle current answer
+                if (isOpen) {
+                    answer.classList.remove('hidden');
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    answer.classList.add('hidden');
+                    icon.style.transform = '';
+                }
+            });
+        });
+    });
+</script> 

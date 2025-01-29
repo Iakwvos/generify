@@ -1,0 +1,110 @@
+/* Analytics Page Styles */
+
+/* Stats Cards */
+.card {
+    @apply bg-gray-800 rounded-lg shadow-lg;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-value {
+    @apply text-primary font-bold;
+}
+
+/* Charts */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    @apply text-left text-gray-400 pb-3 border-b border-gray-700;
+    font-weight: 500;
+}
+
+td {
+    @apply py-3 border-b border-gray-700;
+}
+
+/* Time Range Selector */
+#time-range {
+    transition: all 0.3s ease;
+}
+
+#time-range:hover {
+    border-color: var(--color-primary);
+}
+
+#time-range:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* Error Message */
+.error-message {
+    @apply bg-red-900/20 border border-red-500 text-red-400 p-4 rounded-lg mb-6;
+}
+
+/* Loading State */
+.loading-skeleton {
+    @apply animate-pulse bg-gray-700 rounded;
+}
+
+/* Referrer List Items */
+.referrer-item {
+    transition: all 0.3s ease;
+}
+
+.referrer-item:hover {
+    background-color: rgba(75, 85, 99, 0.3);
+}
+
+/* Loading States */
+.loading-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(31, 41, 55, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.loading-spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--color-primary);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 250px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+} 

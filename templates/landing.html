@@ -1,0 +1,243 @@
+{% extends "base_landing.html" %}
+
+{% block content %}
+<!-- Include Header -->
+{% include 'components/landing/header.html' %}
+
+<!-- Main Content -->
+<main class="relative">
+    <!-- Background Gradient -->
+    <div class="fixed inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 -z-10"></div>
+    
+    <!-- Animated Background Shapes -->
+    <div class="fixed inset-0 overflow-hidden -z-5">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float-delayed"></div>
+    </div>
+    
+    <!-- Hero Section -->
+    {% include 'components/landing/hero.html' %}
+    
+    <!-- Features Section -->
+    {% include 'components/landing/features.html' %}
+    
+    <!-- How It Works Section -->
+    {% include 'components/landing/how-it-works.html' %}
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-32 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20 slide-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    What Our Users Say
+                </h2>
+                <p class="text-xl text-gray-400">
+                    Join thousands of satisfied store owners who have transformed their business with Generify.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="p-8 bg-gray-900/50 rounded-2xl slide-up" data-delay="0.2">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/1.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <p class="text-gray-400">Fashion Store Owner</p>
+                            <p class="text-primary text-sm">$2M+ Annual Revenue</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Generify has completely transformed how I manage my store. The AI-generated descriptions are amazing, and my sales have increased by 40% since I started using it!"</p>
+                    <div class="mt-4 flex items-center">
+                        <div class="flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-400">5.0</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="p-8 bg-gray-900/50 rounded-2xl slide-up" data-delay="0.4">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/2.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <p class="text-gray-400">Electronics Store Owner</p>
+                            <p class="text-primary text-sm">500+ Products</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"The analytics insights have been invaluable for my business decisions. The AI suggestions are spot-on, and the support team is incredibly helpful when I need them!"</p>
+                    <div class="mt-4 flex items-center">
+                        <div class="flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="ml-2 text-gray-400">4.5</span>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="p-8 bg-gray-900/50 rounded-2xl slide-up" data-delay="0.6">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/3.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Emma Davis</h4>
+                            <p class="text-gray-400">Home Decor Store Owner</p>
+                            <p class="text-primary text-sm">300% YoY Growth</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"I was skeptical about AI at first, but Generify has proven to be a game-changer. The time I save on content creation alone is worth the investment!"</p>
+                    <div class="mt-4 flex items-center">
+                        <div class="flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-400">5.0</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="p-8 bg-gray-900/50 rounded-2xl slide-up" data-delay="0.8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/4.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">James Wilson</h4>
+                            <p class="text-gray-400">Sports Equipment Store</p>
+                            <p class="text-primary text-sm">50K+ Monthly Visitors</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"The automated inventory management and AI-powered descriptions have revolutionized our workflow. Our conversion rate has doubled since implementing Generify!"</p>
+                    <div class="mt-4 flex items-center">
+                        <div class="flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-400">5.0</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="p-8 bg-gray-900/50 rounded-2xl slide-up" data-delay="1.0">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/5.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sofia Rodriguez</h4>
+                            <p class="text-gray-400">Handmade Jewelry Store</p>
+                            <p class="text-primary text-sm">1000+ Orders Monthly</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"As a solo entrepreneur, Generify has been like having a full marketing team. The AI content generation and analytics have helped me scale beyond my expectations!"</p>
+                    <div class="mt-4 flex items-center">
+                        <div class="flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="ml-2 text-gray-400">4.5</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="p-8 bg-gray-900/50 rounded-2xl slide-up" data-delay="1.2">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/6.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">David Thompson</h4>
+                            <p class="text-gray-400">Vintage Collectibles</p>
+                            <p class="text-primary text-sm">15 Years Experience</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"The AI's ability to generate unique descriptions for each vintage item while maintaining authenticity is remarkable. Our customers love the detailed product stories!"</p>
+                    <div class="mt-4 flex items-center">
+                        <div class="flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-400">5.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    {% include 'components/landing/pricing.html' %}
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-gray-900/50 rounded-2xl p-8 md:p-12 slide-up">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        Get in Touch
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Have questions? We're here to help you succeed.
+                    </p>
+                </div>
+                
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:ring-2 focus:ring-primary outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:ring-2 focus:ring-primary outline-none transition-all">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Message</label>
+                        <textarea rows="4" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:ring-2 focus:ring-primary outline-none transition-all"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="px-8 py-4 bg-primary text-gray-900 rounded-lg font-medium hover:bg-opacity-90 transition-all transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    {% include 'components/landing/footer.html' %}
+</main>
+
+<!-- Add this script at the bottom of your content block -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check URL parameters for modal
+        const urlParams = new URLSearchParams(window.location.search);
+        const openModal = urlParams.get('open_modal');
+        
+        // If open_modal parameter exists, open the corresponding modal
+        if (openModal) {
+            openAuthModal(openModal);
+            
+            // Clean up the URL without refreshing the page
+            const newUrl = window.location.pathname;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+    });
+</script>
+{% endblock %} 

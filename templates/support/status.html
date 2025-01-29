@@ -1,0 +1,141 @@
+{% extends "base_landing.html" %}
+
+{% block content %}
+<div class="container mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-8">System Status</h1>
+    
+    <!-- Overall Status -->
+    <div class="bg-green-500/20 border border-green-500/50 rounded-xl p-6 mb-12">
+        <div class="flex items-center">
+            <div class="w-4 h-4 bg-green-500 rounded-full mr-4"></div>
+            <div>
+                <h2 class="text-2xl font-bold">All Systems Operational</h2>
+                <p class="text-gray-400">Updated 5 minutes ago</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Service Status -->
+    <div class="space-y-6">
+        <!-- Core Services -->
+        <div class="bg-gray-900/50 rounded-xl p-6">
+            <h3 class="text-xl font-bold mb-4">Core Services</h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <span>API</span>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-gray-400">Operational</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>Dashboard</span>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-gray-400">Operational</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>Authentication</span>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-gray-400">Operational</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI Services -->
+        <div class="bg-gray-900/50 rounded-xl p-6">
+            <h3 class="text-xl font-bold mb-4">AI Services</h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <span>Content Generation</span>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-gray-400">Operational</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>Analytics Engine</span>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-gray-400">Operational</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>Image Processing</span>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-gray-400">Operational</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- External Integrations -->
+        <div class="bg-gray-900/50 rounded-xl p-6">
+            <h3 class="text-xl font-bold mb-4">External Integrations</h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <span>Shopify API</span>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-gray-400">Operational</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>Payment Processing</span>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-gray-400">Operational</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>Email Service</span>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-gray-400">Operational</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Incident History -->
+    <div class="mt-12">
+        <h2 class="text-2xl font-bold mb-6">Recent Incidents</h2>
+        <div class="space-y-6">
+            <div class="bg-gray-900/50 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                    <span class="font-bold">Minor Outage - Content Generation API</span>
+                </div>
+                <p class="text-gray-400 mb-2">January 24, 2024 - Resolved</p>
+                <p class="text-gray-400">The content generation API experienced intermittent delays for approximately 15 minutes. The issue has been resolved and all systems are operating normally.</p>
+            </div>
+            
+            <div class="bg-gray-900/50 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                    <span class="font-bold">Scheduled Maintenance</span>
+                </div>
+                <p class="text-gray-400 mb-2">January 20, 2024 - Completed</p>
+                <p class="text-gray-400">Scheduled database optimization and system updates were completed successfully with no service interruption.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Subscribe to Updates -->
+    <div class="mt-12 bg-gray-900/50 rounded-xl p-6">
+        <h2 class="text-2xl font-bold mb-4">Subscribe to Updates</h2>
+        <p class="text-gray-400 mb-6">Get notified about system status changes and scheduled maintenance.</p>
+        <form class="flex gap-4">
+            <input type="email" placeholder="Enter your email" class="flex-1 bg-gray-800 rounded-lg px-4 py-2 border border-gray-700 focus:outline-none focus:border-primary">
+            <button type="submit" class="bg-primary text-gray-900 px-6 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors">
+                Subscribe
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %} 

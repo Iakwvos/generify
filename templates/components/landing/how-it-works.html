@@ -1,0 +1,98 @@
+<!-- How It Works Section -->
+<section id="how-it-works" class="py-32">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                How It Works
+            </h2>
+            <p class="text-xl text-gray-400">
+                Transform your Shopify store management in five simple steps and watch your business grow.
+            </p>
+        </div>
+        
+        <div class="relative">
+            <!-- Connection Line -->
+            <div class="absolute hidden md:block left-1/2 top-24 bottom-24 w-0.5 bg-gradient-to-b from-primary via-primary to-transparent"></div>
+            
+            <!-- Steps -->
+            <div class="space-y-24">
+                <!-- Step 1: Connect -->
+                <div class="relative flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                    <div class="w-full md:w-1/2 text-right order-2 md:order-1">
+                        <div class="step-content p-8 bg-gray-900/50 rounded-2xl hover:bg-gray-900 transition-all duration-300">
+                            <h3 class="text-2xl font-bold mb-4">Connect Your Store</h3>
+                            <p class="text-gray-400">Seamlessly integrate your Shopify store with our dashboard in just a few clicks. Our secure integration ensures your data is protected while providing instant access to all your store's features.</p>
+                        </div>
+                    </div>
+                    <div class="step-number w-16 h-16 bg-primary text-gray-900 rounded-full flex items-center justify-center text-2xl font-bold relative z-10 order-1 md:order-2">1</div>
+                    <div class="w-full md:w-1/2 order-3"></div>
+                </div>
+                
+                <!-- Step 2: Analyze -->
+                <div class="relative flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                    <div class="w-full md:w-1/2"></div>
+                    <div class="step-number w-16 h-16 bg-primary text-gray-900 rounded-full flex items-center justify-center text-2xl font-bold relative z-10">2</div>
+                    <div class="w-full md:w-1/2">
+                        <div class="step-content p-8 bg-gray-900/50 rounded-2xl hover:bg-gray-900 transition-all duration-300">
+                            <h3 class="text-2xl font-bold mb-4">Analyze Your Data</h3>
+                            <p class="text-gray-400">Get deep insights into your store's performance with our AI-powered analytics. Understand customer behavior, track sales trends, and identify growth opportunities with our comprehensive dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Generate -->
+                <div class="relative flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                    <div class="w-full md:w-1/2 text-right order-2 md:order-1">
+                        <div class="step-content p-8 bg-gray-900/50 rounded-2xl hover:bg-gray-900 transition-all duration-300">
+                            <h3 class="text-2xl font-bold mb-4">Generate Content</h3>
+                            <p class="text-gray-400">Let our AI create engaging product descriptions, marketing materials, and SEO-optimized content. Save hours of work while maintaining consistent brand voice across your store.</p>
+                        </div>
+                    </div>
+                    <div class="step-number w-16 h-16 bg-primary text-gray-900 rounded-full flex items-center justify-center text-2xl font-bold relative z-10 order-1 md:order-2">3</div>
+                    <div class="w-full md:w-1/2 order-3"></div>
+                </div>
+                
+                <!-- Step 4: Optimize -->
+                <div class="relative flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                    <div class="w-full md:w-1/2"></div>
+                    <div class="step-number w-16 h-16 bg-primary text-gray-900 rounded-full flex items-center justify-center text-2xl font-bold relative z-10">4</div>
+                    <div class="w-full md:w-1/2">
+                        <div class="step-content p-8 bg-gray-900/50 rounded-2xl hover:bg-gray-900 transition-all duration-300">
+                            <h3 class="text-2xl font-bold mb-4">Optimize Performance</h3>
+                            <p class="text-gray-400">Implement AI-driven recommendations to optimize your store's performance. From pricing strategies to inventory management, make data-driven decisions that boost your bottom line.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 5: Scale -->
+                <div class="relative flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                    <div class="w-full md:w-1/2 text-right order-2 md:order-1">
+                        <div class="step-content p-8 bg-gray-900/50 rounded-2xl hover:bg-gray-900 transition-all duration-300">
+                            <h3 class="text-2xl font-bold mb-4">Scale Your Business</h3>
+                            <p class="text-gray-400">Watch your business grow with automated workflows and intelligent insights. Scale your operations efficiently while maintaining quality and customer satisfaction.</p>
+                        </div>
+                    </div>
+                    <div class="step-number w-16 h-16 bg-primary text-gray-900 rounded-full flex items-center justify-center text-2xl font-bold relative z-10 order-1 md:order-2">5</div>
+                    <div class="w-full md:w-1/2 order-3"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="text-center mt-24">
+            {% if session.get('user') %}
+                <a href="{{ url_for('main.dashboard') }}" 
+                   class="inline-flex items-center px-8 py-4 bg-primary text-gray-900 rounded-lg font-medium text-lg hover:bg-opacity-90 transition-all hover:scale-105 transform">
+                    <i class="fas fa-chart-line mr-2"></i>
+                    Go to Dashboard
+                </a>
+            {% else %}
+                <button onclick="openAuthModal('signup')" 
+                   class="inline-flex items-center px-8 py-4 bg-primary text-gray-900 rounded-lg font-medium text-lg hover:bg-opacity-90 transition-all hover:scale-105 transform">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Get Started Now
+                </button>
+            {% endif %}
+        </div>
+    </div>
+</section> 

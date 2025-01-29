@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Shopify Dashboard{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    
+    <!-- Common CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Global Styles -->
+    <link href="{{ url_for('static', filename='css/global.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/dashboard/main.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/dashboard/components/sidebar.css') }}" rel="stylesheet">
+    
+    <!-- Page Specific CSS -->
+    {% block page_css %}{% endblock %}
+</head>
+<body>
+    <!-- Include Sidebar -->
+    {% include 'components/dashboard/sidebar.html' %}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Common Scripts -->
+    <script src="{{ url_for('static', filename='js/utils/helpers.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/services/ToastService.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/utils/animations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/loading-messages.js') }}"></script>
+
+    <!-- Component Scripts -->
+    <script src="{{ url_for('static', filename='js/components/ProductGrid.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/ProductActions.js') }}"></script>
+
+    <!-- Main Script -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

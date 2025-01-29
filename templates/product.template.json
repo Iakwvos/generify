@@ -1,0 +1,1154 @@
+{
+    "order": [
+      "main",
+      "pp_image_with_benefits_gkXTTj",
+      "pp_image_with_text_BVEaDq",
+      "pp_image_with_percentage_fLf47C",
+      "pp_reviews_dqQHmw",
+      "pp_comparison_table_ttamEN",
+      "pp_faq_TtURdM",
+      "pp_guarantee_NNKyJ6",
+      "related-products",
+      "featured_collection_pkU6gk"
+    ],
+    "sections": {
+      "featured_collection_pkU6gk": {
+        "settings": {
+          "collection": "frontpage",
+          "color_scheme": "",
+          "columns_desktop": 5,
+          "columns_mobile": "2",
+          "description": "",
+          "description_style": "body",
+          "enable_desktop_slider": false,
+          "full_width": false,
+          "heading": "Frequently Bought Together",
+          "heading_alignment": "center",
+          "heading_color": "#000000",
+          "heading_mobilealignment": "center",
+          "heading_size": "h1",
+          "image_ratio": "adapt",
+          "image_rounded_corners": "medium",
+          "image_shape": "default",
+          "padding_bottom": 36,
+          "padding_top": 36,
+          "products_to_show": 10,
+          "quick_add": "none",
+          "show_description": false,
+          "show_rating": false,
+          "show_secondary_image": false,
+          "show_vendor": false,
+          "show_view_all": false,
+          "swipe_on_mobile": false,
+          "view_all_style": "solid"
+        },
+        "type": "featured-collection"
+      },
+      "main": {
+        "block_order": [
+          "reviews_number_wmFXyt",
+          "product_title_DXtTRC",
+          "price",
+          "pp_text_VLf9ic",
+          "pp_benefits_Lfapdf",
+          "variant_picker",
+          "quantity_selector",
+          "buy_buttons",
+          "pp_guarantees_JzRPwy",
+          "pp_review_DzipVt",
+          "pp_expandable_r43w6T",
+          "pp_partners_7B3bAx"
+        ],
+        "blocks": {
+          "buy_buttons": {
+            "settings": {
+              "button_color": "#fa3a95",
+              "button_padding_horizontal": 15,
+              "button_padding_vertical": 20,
+              "button_rounded_corners": "medium",
+              "button_text": "Add To Cart \ud83d\udc49\ud83c\udffb",
+              "show_dynamic_checkout": false,
+              "show_gift_card_recipient": false,
+              "sold_out_text": "Sold Out \ud83d\ude2d",
+              "text_color": "#ffffff",
+              "unavailable_text": "Unavailable"
+            },
+            "type": "buy_buttons"
+          },
+          "pp_benefits_Lfapdf": {
+            "settings": {
+              "pp_benefits_border_bottom": 1,
+              "pp_benefits_border_color": "#e8e8e1",
+              "pp_benefits_border_top": 0,
+              "pp_benefits_padding_bottom": 12,
+              "pp_benefits_padding_top": 0,
+              "pp_benefits_text1": "\u2714\ufe0f Enhances your natural glow",
+              "pp_benefits_text2": "\u2714\ufe0f Boosts skin vitality effortlessly",
+              "pp_benefits_text3": "\u2714\ufe0f Reduces puffiness and wrinkles",
+              "pp_benefits_text4": "\u2714\ufe0f Waterproof for bath-time use",
+              "pp_benefits_text_alignment": "left",
+              "pp_benefits_text_color": "#000000",
+              "pp_benefits_text_mobilealignment": "left",
+              "pp_benefits_text_size": "body"
+            },
+            "type": "pp-benefits"
+          },
+          "pp_expandable_r43w6T": {
+            "settings": {
+              "pp_expandable_answer_size": "small",
+              "pp_expandable_arrow_color": "#000000",
+              "pp_expandable_border_bottom": 0,
+              "pp_expandable_border_color": "#e8e8e1",
+              "pp_expandable_border_top": 1,
+              "pp_expandable_content1": "<p><p>Enjoy insured shipping on all orders. We process orders within 1-3 business days before dispatching. Upon shipment, the anticipated delivery times are as follows:</p><ul><li>USA: 3-7 business days</li><li>UK: 7-18 business days</li><li>Australia: 7-18 business days</li><li>Canada: 7-18 business days</li><li>Europe: 7-18 business days</li><li>Rest of world: 14-20 business days</li></ul></p>",
+              "pp_expandable_content2": "<p><p>We are certain you wll adore our products, just as we do! If, however, things don not work out as expected, our return and refund policy is crafted to simplify the process for you. You can return the product for a full refund within 30 days of purchase.</p></p>",
+              "pp_expandable_content3": "<p><p>You can try our products risk-free with our 30-day Money-Back Guarantee. If you are not completely satisfied, simply return it for a full refund.</p></p>",
+              "pp_expandable_padding_bottom": 0,
+              "pp_expandable_padding_top": 12,
+              "pp_expandable_text_border_color": "#e8e8e1",
+              "pp_expandable_text_color": "#000000",
+              "pp_expandable_text_size": "medium",
+              "pp_expandable_title1": "\ud83d\ude9a Shipping",
+              "pp_expandable_title2": "\ud83d\udce6 Returns",
+              "pp_expandable_title3": "\ud83c\udfc5 Money Back Guarantee"
+            },
+            "type": "pp-expandable"
+          },
+          "pp_guarantees_JzRPwy": {
+            "settings": {
+              "pp_guarantees_border_bottom": 1,
+              "pp_guarantees_border_color": "#e8e8e1",
+              "pp_guarantees_border_top": 0,
+              "pp_guarantees_icon1": "truck",
+              "pp_guarantees_icon2": "heart",
+              "pp_guarantees_icon3": "box",
+              "pp_guarantees_icon_color": "#000000",
+              "pp_guarantees_icon_size": 28,
+              "pp_guarantees_padding_bottom": 16,
+              "pp_guarantees_padding_top": 0,
+              "pp_guarantees_text1": "Worldwide Shipping",
+              "pp_guarantees_text2": "100% Money Back Guarantee",
+              "pp_guarantees_text3": "Free Returns",
+              "pp_guarantees_text_color": "#000000",
+              "pp_guarantees_text_size": "small"
+            },
+            "type": "pp-guarantees"
+          },
+          "pp_partners_7B3bAx": {
+            "settings": {
+              "pp_partners_border_bottom": 0,
+              "pp_partners_border_color": "#e8e8e1",
+              "pp_partners_border_top": 0,
+              "pp_partners_gradient": "radial-gradient(rgba(255, 255, 255, 0.93) 34%, rgba(255, 255, 255, 0.17) 77%)",
+              "pp_partners_heading": "<strong>As Seen On</strong>",
+              "pp_partners_heading_color": "#000000",
+              "pp_partners_heading_size": "medium",
+              "pp_partners_padding_bottom": 0,
+              "pp_partners_padding_top": 0
+            },
+            "type": "pp-partners"
+          },
+          "pp_review_DzipVt": {
+            "settings": {
+              "pp_review_author_badge_color": "#2993f1",
+              "pp_review_author_badge_text": "<p>Aubrey H.</p>",
+              "pp_review_author_badge_text_color": "#000000",
+              "pp_review_author_badge_text_style": "small",
+              "pp_review_border_bottom": 0,
+              "pp_review_border_color": "#e8e8e1",
+              "pp_review_border_top": 0,
+              "pp_review_image": "shopify://shop_images/39.webp",
+              "pp_review_image_border_radius": "full",
+              "pp_review_padding_bottom": 0,
+              "pp_review_padding_top": 0,
+              "pp_review_stars_alignment": "start",
+              "pp_review_stars_color": "#facc15",
+              "pp_review_stars_mobilealignment": "start",
+              "pp_review_stars_number": 5,
+              "pp_review_stars_size": "sm",
+              "pp_review_text": "\"OMG, this is amazing! I use it every night, and my face looks so much firmer and smoother. I can see a big change under my eyes - no more puffiness \ud83d\ude0d\ud83d\udc4d I love the luxurious feel, and it's so easy to use. Highly recommend!\"",
+              "pp_review_text_alignment": "left",
+              "pp_review_text_color": "#000000",
+              "pp_review_text_mobilealignment": "left",
+              "pp_review_text_style": "small"
+            },
+            "type": "pp-review"
+          },
+          "pp_text_VLf9ic": {
+            "settings": {
+              "pp_text": "Unlock youthful radiance with our luxury facial roller and massager",
+              "pp_text_alignment": "left",
+              "pp_text_border_bottom": 1,
+              "pp_text_border_color": "#e8e8e1",
+              "pp_text_border_top": 0,
+              "pp_text_color": "#000000",
+              "pp_text_mobilealignment": "left",
+              "pp_text_padding_bottom": 16,
+              "pp_text_padding_top": 0,
+              "pp_text_size": "body"
+            },
+            "type": "pp-text"
+          },
+          "price": {
+            "settings": {
+              "price_show_badge": false,
+              "price_text_color": "#000000",
+              "pricecomparedat_text_color": "#af032a"
+            },
+            "type": "price"
+          },
+          "product_title_DXtTRC": {
+            "settings": {
+              "product_title_heading_alignment": "left",
+              "product_title_heading_color": "#000000",
+              "product_title_heading_mobilealignment": "left",
+              "product_title_heading_size": "h1",
+              "product_title_padding_bottom": 0,
+              "product_title_padding_top": 0
+            },
+            "type": "product-title"
+          },
+          "quantity_selector": {
+            "settings": {},
+            "type": "quantity_selector"
+          },
+          "reviews_number_wmFXyt": {
+            "settings": {
+              "reviews_alignment": "start",
+              "reviews_border_top": 0,
+              "reviews_mobilealignment": "start",
+              "reviews_padding_bottom": 0,
+              "reviews_padding_top": 0,
+              "reviews_stars_color": "#facc15",
+              "reviews_stars_number": 5,
+              "reviews_stars_size": "sm",
+              "reviews_text": "186 Reviews",
+              "reviews_text_color": "#000000",
+              "reviews_text_style": "body"
+            },
+            "type": "reviews-number"
+          },
+          "variant_picker": {
+            "settings": {
+              "picker_type": "button",
+              "swatch_shape": "circle"
+            },
+            "type": "variant_picker"
+          }
+        },
+        "settings": {
+          "color_scheme": "scheme-1abe165f-834c-4397-80e1-165dc6524d44",
+          "constrain_to_viewport": true,
+          "enable_sticky_info": true,
+          "enable_video_looping": false,
+          "gallery_layout": "thumbnail",
+          "hide_variants": false,
+          "image_rounded_corners": "medium",
+          "image_zoom": "none",
+          "media_fit": "contain",
+          "media_position": "left",
+          "media_size": "medium",
+          "mobile_padding_bottom": 0,
+          "mobile_padding_top": 12,
+          "mobile_thumbnails": "hide",
+          "padding_bottom": 12,
+          "padding_top": 36
+        },
+        "type": "main-product"
+      },
+      "pp_comparison_table_ttamEN": {
+        "block_order": [
+          "heading_Wjx9pp",
+          "text_4ad9ba",
+          "tableitem_6hMT9z",
+          "tableitem_KNWAfa",
+          "tableitem_jB68ak",
+          "tableitem_CVBp68",
+          "tableitem_6Crhhq"
+        ],
+        "blocks": {
+          "heading_Wjx9pp": {
+            "settings": {
+              "heading": "<strong>Why Choose 24K Gold Vibrating Face Lifter?</strong>",
+              "heading_alignment": "center",
+              "heading_color": "#000000",
+              "heading_mobilealignment": "center",
+              "heading_size": "h1"
+            },
+            "type": "heading"
+          },
+          "tableitem_6Crhhq": {
+            "settings": {
+              "button_checkmark_color": "#23c55e",
+              "button_x_color": "#000000",
+              "checkmark": "us",
+              "text": "Affordable"
+            },
+            "type": "tableitem"
+          },
+          "tableitem_6hMT9z": {
+            "settings": {
+              "button_checkmark_color": "#23c55e",
+              "button_x_color": "#000000",
+              "checkmark": "us",
+              "text": "Radiant"
+            },
+            "type": "tableitem"
+          },
+          "tableitem_CVBp68": {
+            "settings": {
+              "button_checkmark_color": "#23c55e",
+              "button_x_color": "#000000",
+              "checkmark": "us",
+              "text": "Elegant"
+            },
+            "type": "tableitem"
+          },
+          "tableitem_KNWAfa": {
+            "settings": {
+              "button_checkmark_color": "#23c55e",
+              "button_x_color": "#000000",
+              "checkmark": "us",
+              "text": "Soothing"
+            },
+            "type": "tableitem"
+          },
+          "tableitem_jB68ak": {
+            "settings": {
+              "button_checkmark_color": "#23c55e",
+              "button_x_color": "#000000",
+              "checkmark": "us",
+              "text": "Rejuvenating"
+            },
+            "type": "tableitem"
+          },
+          "text_4ad9ba": {
+            "settings": {
+              "text": "<p>While others might promise results, our 24K Gold Vibrating Face Lifter delivers tangible transformation by incorporating advanced technology to improve skin's appearance and feel. Its unique design ensures ease of use while delivering luxurious and visibly effective results. Unlike others, it gives you the dual benefit of luxury and effectiveness.</p>",
+              "text_alignment": "left",
+              "text_color": "#000000",
+              "text_mobilealignment": "left",
+              "text_style": "subtitle"
+            },
+            "type": "text"
+          }
+        },
+        "settings": {
+          "gradient": "",
+          "margin_bottom": 0,
+          "margin_top": 0,
+          "padding_bottom": 52,
+          "padding_top": 32,
+          "table_color": "#ffa1d3",
+          "table_headline_color": "#000000",
+          "table_headline_secondary": "Others",
+          "text_color": "#ffffff"
+        },
+        "type": "pp-comparison-table"
+      },
+      "pp_faq_TtURdM": {
+        "block_order": [
+          "question_UUEbPG",
+          "question_iwgzRn",
+          "question_gNmdPq",
+          "question_NpRfRa",
+          "question_cwFiY9"
+        ],
+        "blocks": {
+          "question_NpRfRa": {
+            "settings": {
+              "heading": "Is the face lifter portable for travel?",
+              "heading_color": "#000000",
+              "heading_size": "h3",
+              "text": "<p>Yes, it is compact and easy to store in any travel bag, allowing you to maintain your skincare routine while on-the-go without any hassle.</p>",
+              "text_color": "#000000",
+              "text_style": "body"
+            },
+            "type": "question"
+          },
+          "question_UUEbPG": {
+            "settings": {
+              "heading": "How often should I use the 24K Gold Face Lifter?",
+              "heading_color": "#000000",
+              "heading_size": "h3",
+              "text": "<p>For optimal results, use the 24K Gold Face Lifter daily as part of your skincare routine. Most users notice significant changes within a few weeks of consistent use.</p>",
+              "text_color": "#000000",
+              "text_style": "body"
+            },
+            "type": "question"
+          },
+          "question_cwFiY9": {
+            "settings": {
+              "heading": "What is the warranty period for the face lifter?",
+              "heading_color": "#000000",
+              "heading_size": "h3",
+              "text": "<p>The 24K Gold Face Lifter comes with a one-year warranty, ensuring quality and reliability. Contact our customer service for any concerns or issues.</p>",
+              "text_color": "#000000",
+              "text_style": "body"
+            },
+            "type": "question"
+          },
+          "question_gNmdPq": {
+            "settings": {
+              "heading": "Can I use it with facial oils or serums?",
+              "heading_color": "#000000",
+              "heading_size": "h3",
+              "text": "<p>Absolutely! The 24K Gold Face Lifter can be used alongside your favorite facial oils or serums to enhance absorption and maximize your skin's glow and hydration.</p>",
+              "text_color": "#000000",
+              "text_style": "body"
+            },
+            "type": "question"
+          },
+          "question_iwgzRn": {
+            "settings": {
+              "heading": "Is the product suitable for sensitive skin?",
+              "heading_color": "#000000",
+              "heading_size": "h3",
+              "text": "<p>Yes, the 24K Gold Face Lifter is designed to be gentle and suitable for all skin types, including sensitive skin. Always perform a patch test prior to full use.</p>",
+              "text_color": "#000000",
+              "text_style": "body"
+            },
+            "type": "question"
+          }
+        },
+        "settings": {
+          "arrow_color": "#000000",
+          "border_color": "#ffcbe8",
+          "border_size": "small",
+          "gradient": "",
+          "heading": "Frequently Asked Questions",
+          "heading_alignment": "center",
+          "heading_color": "#000000",
+          "heading_mobilealignment": "center",
+          "heading_size": "h1",
+          "margin_bottom": 0,
+          "margin_top": 0,
+          "padding_bottom": 0,
+          "padding_top": 0,
+          "question_background_color": "#ffffff",
+          "rounded_corners": "medium",
+          "text": "",
+          "text_alignment": "center",
+          "text_color": "#000000",
+          "text_mobilealignment": "center",
+          "text_style": "subtitle"
+        },
+        "type": "pp-faq"
+      },
+      "pp_guarantee_NNKyJ6": {
+        "block_order": [
+          "icon_tVTcmU",
+          "heading_jfhp4z",
+          "text_N44eGB",
+          "button_8tJzYX"
+        ],
+        "blocks": {
+          "button_8tJzYX": {
+            "settings": {
+              "button_action": "scroll",
+              "button_action_scroll_element": "",
+              "button_alignment": "center",
+              "button_background_color": "#fa3a95",
+              "button_border_color": "#000000",
+              "button_border_width": 0,
+              "button_label": "Buy Now \ud83d\udc49\ud83c\udffb",
+              "button_link": "",
+              "button_link_newtab": true,
+              "button_mobilealignment": "left",
+              "button_padding_horizontal": 25,
+              "button_padding_vertical": 15,
+              "button_rounded_corners": "medium",
+              "button_subtext": "100% Money Back Guarantee",
+              "button_subtext_color": "#000000",
+              "button_subtext_style": "body",
+              "button_text_color": "#ffffff",
+              "button_width": "fit",
+              "button_width_mobile": "full"
+            },
+            "type": "button"
+          },
+          "heading_jfhp4z": {
+            "settings": {
+              "heading": "Feel confident with our 30-day money-back guarantee",
+              "heading_alignment": "center",
+              "heading_color": "#000000",
+              "heading_mobilealignment": "center",
+              "heading_size": "h1"
+            },
+            "type": "heading"
+          },
+          "icon_tVTcmU": {
+            "settings": {
+              "icon_alignment": "center",
+              "icon_color": "#fa3a95",
+              "icon_mobilealignment": "center",
+              "icon_size": 65,
+              "icon_type": "heart"
+            },
+            "type": "icon"
+          },
+          "text_N44eGB": {
+            "settings": {
+              "text": "<p>Try the 24K Gold Vibrating Face Lifter risk-free with our 30-day money-back guarantee. We believe in the transformative power this product brings to your skin routine, enhancing not just your appearance but also your confidence. If you're not absolutely thrilled with the radiant results within 30 days, receive a full refund. Empower your skincare journey with us today.</p>",
+              "text_alignment": "center",
+              "text_color": "#000000",
+              "text_mobilealignment": "center",
+              "text_style": "subtitle"
+            },
+            "type": "text"
+          }
+        },
+        "settings": {
+          "gradient": "",
+          "margin_bottom": 0,
+          "margin_top": 0,
+          "padding_bottom": 32,
+          "padding_top": 32
+        },
+        "type": "pp-guarantee"
+      },
+      "pp_image_with_benefits_gkXTTj": {
+        "block_order": [
+          "benefit_7CB6Bn",
+          "benefit_7HpQgA",
+          "benefit_erNb6q",
+          "benefit_gJWaeR"
+        ],
+        "blocks": {
+          "benefit_7CB6Bn": {
+            "settings": {
+              "emoji": "\u2728",
+              "emoji_size": "medium",
+              "heading": "Radiance",
+              "heading_color": "#000000",
+              "heading_size": "h3",
+              "text": "<p>Feel your skin glow with improved texture and tone.</p>",
+              "text_color": "#000000",
+              "text_style": "body"
+            },
+            "type": "benefit"
+          },
+          "benefit_7HpQgA": {
+            "settings": {
+              "emoji": "\ud83d\udca6",
+              "emoji_size": "medium",
+              "heading": "Hydration",
+              "heading_color": "#000000",
+              "heading_size": "h3",
+              "text": "<p>Promotes moisture retention for a plump, youthful look.</p>",
+              "text_color": "#000000",
+              "text_style": "body"
+            },
+            "type": "benefit"
+          },
+          "benefit_erNb6q": {
+            "settings": {
+              "emoji": "\ud83d\udc86\u200d\u2640\ufe0f",
+              "emoji_size": "medium",
+              "heading": "Relaxation",
+              "heading_color": "#000000",
+              "heading_size": "h3",
+              "text": "<p>Enjoy soothing facial massages to calm the mind and skin.</p>",
+              "text_color": "#000000",
+              "text_style": "body"
+            },
+            "type": "benefit"
+          },
+          "benefit_gJWaeR": {
+            "settings": {
+              "emoji": "\ud83c\udf3f",
+              "emoji_size": "medium",
+              "heading": "Nature",
+              "heading_color": "#000000",
+              "heading_size": "h3",
+              "text": "<p>Boosts circulation and fights signs of aging naturally.</p>",
+              "text_color": "#000000",
+              "text_style": "body"
+            },
+            "type": "benefit"
+          }
+        },
+        "settings": {
+          "desktop_image_width": "medium",
+          "gradient": "linear-gradient(176deg, rgba(255, 255, 255, 0), #fee5f2 100%)",
+          "heading": "<strong>Transform your daily beauty ritual</strong>",
+          "heading_alignment": "center",
+          "heading_color": "#000000",
+          "heading_mobilealignment": "center",
+          "heading_size": "h1",
+          "image": "shopify://shop_images/Hf40cf300f5f24ab4af2492ad9fd4aa59l.webp",
+          "image_border_radius": 100,
+          "margin_bottom": 36,
+          "margin_top": 20,
+          "padding_bottom": 32,
+          "padding_top": 32,
+          "text": "<p>Revitalize your skin and elevate your self-care routine for enhanced confidence and beauty</p>",
+          "text_alignment": "center",
+          "text_color": "#000000",
+          "text_mobilealignment": "center",
+          "text_style": "subtitle"
+        },
+        "type": "pp-image-with-benefits"
+      },
+      "pp_image_with_percentage_fLf47C": {
+        "block_order": [
+          "heading_UYwMbc",
+          "percent_MDgdzN",
+          "percent_DNwFD7",
+          "percent_Wh6UWW",
+          "button_zpmLYc"
+        ],
+        "blocks": {
+          "button_zpmLYc": {
+            "settings": {
+              "button_action": "scroll",
+              "button_action_scroll_element": "",
+              "button_alignment": "left",
+              "button_background_color": "#fa3a95",
+              "button_border_color": "#000000",
+              "button_border_width": 0,
+              "button_label": "Get Yours Now \ud83d\udc49\ud83c\udffb",
+              "button_link": "",
+              "button_link_newtab": true,
+              "button_mobilealignment": "left",
+              "button_padding_horizontal": 15,
+              "button_padding_vertical": 15,
+              "button_rounded_corners": "medium",
+              "button_subtext": "30-Day Satisfaction Guarantee",
+              "button_subtext_color": "#000000",
+              "button_subtext_style": "body",
+              "button_text_color": "#ffffff",
+              "button_width": "full"
+            },
+            "type": "button"
+          },
+          "heading_UYwMbc": {
+            "settings": {
+              "heading": "<strong>Indulge with the 24K Gold Vibrating Face Lifter</strong>",
+              "heading_alignment": "left",
+              "heading_color": "#000000",
+              "heading_mobilealignment": "left",
+              "heading_size": "h1"
+            },
+            "type": "heading"
+          },
+          "percent_DNwFD7": {
+            "settings": {
+              "border_color": "#d0d5dd",
+              "border_size": 1,
+              "percent_background_color": "#ffffff",
+              "percent_filled_color": "#fa3a95",
+              "percent_text_color": "#fa3a95",
+              "percent_unfilled_color": "#ffcbe8",
+              "percent_value": 94,
+              "text": "<p>Reported reduced under-eye puffiness</p>",
+              "text_alignment": "left",
+              "text_color": "#000000",
+              "text_mobilealignment": "center",
+              "text_style": "subtitle"
+            },
+            "type": "percent"
+          },
+          "percent_MDgdzN": {
+            "settings": {
+              "border_color": "#d0d5dd",
+              "border_size": 1,
+              "percent_background_color": "#ffffff",
+              "percent_filled_color": "#fa3a95",
+              "percent_text_color": "#fa3a95",
+              "percent_unfilled_color": "#ffcbe8",
+              "percent_value": 94,
+              "text": "<p>Felt skin instantly tighter and more lifted</p>",
+              "text_alignment": "left",
+              "text_color": "#000000",
+              "text_mobilealignment": "center",
+              "text_style": "subtitle"
+            },
+            "type": "percent"
+          },
+          "percent_Wh6UWW": {
+            "settings": {
+              "border_color": "#d0d5dd",
+              "border_size": 1,
+              "percent_background_color": "#ffffff",
+              "percent_filled_color": "#fa3a95",
+              "percent_text_color": "#fa3a95",
+              "percent_unfilled_color": "#ffcbe8",
+              "percent_value": 94,
+              "text": "<p>Noticed a significant increase in skin glow</p>",
+              "text_alignment": "left",
+              "text_color": "#000000",
+              "text_mobilealignment": "center",
+              "text_style": "subtitle"
+            },
+            "type": "percent"
+          }
+        },
+        "settings": {
+          "desktop_image_width": "large",
+          "gradient": "",
+          "image": "shopify://shop_images/Hd88b228bdccc44a593cb3a368bae9edeE.webp",
+          "image_border_radius": 50,
+          "layout": "image_first",
+          "margin_bottom": 44,
+          "margin_top": 0,
+          "mobile_layout": "image_first",
+          "padding_bottom": 0,
+          "padding_top": 0
+        },
+        "type": "pp-image-with-percentage"
+      },
+      "pp_image_with_text_BVEaDq": {
+        "block_order": [
+          "heading_aFxCRe",
+          "text_ifpgzE",
+          "button_cPWTPH"
+        ],
+        "blocks": {
+          "button_cPWTPH": {
+            "settings": {
+              "button_action": "scroll",
+              "button_action_scroll_element": "",
+              "button_alignment": "left",
+              "button_background_color": "#fa3a95",
+              "button_border_color": "#000000",
+              "button_border_width": 0,
+              "button_label": "Shop Now \ud83d\udc49\ud83c\udffb",
+              "button_link": "",
+              "button_link_newtab": true,
+              "button_mobilealignment": "left",
+              "button_padding_horizontal": 15,
+              "button_padding_vertical": 15,
+              "button_rounded_corners": "medium",
+              "button_subtext": "100% Money Back Guarantee",
+              "button_subtext_color": "#000000",
+              "button_subtext_style": "body",
+              "button_text_color": "#ffffff",
+              "button_width": "full"
+            },
+            "type": "button"
+          },
+          "heading_aFxCRe": {
+            "settings": {
+              "heading": "Elevate your skincare to a luxurious experience",
+              "heading_alignment": "left",
+              "heading_color": "#000000",
+              "heading_mobilealignment": "left",
+              "heading_size": "h1"
+            },
+            "type": "heading"
+          },
+          "text_ifpgzE": {
+            "settings": {
+              "text": "<p>Experience the luxurious touch of the 24K Gold Vibrating Face Lifter. Scientifically designed to enhance blood circulation and promote collagen production, it's the perfect addition to any skincare regime. Whether you're dealing with under-eye puffiness or lackluster skin, this tool revitalizes your complexion with every use, transforming your skin into a canvas of elegance and beauty. Discover how a simple daily ritual can restore confidence by enhancing your natural features, leaving you feeling rejuvenated and glamorous.</p>",
+              "text_alignment": "left",
+              "text_color": "#000000",
+              "text_mobilealignment": "center",
+              "text_style": "body"
+            },
+            "type": "text"
+          }
+        },
+        "settings": {
+          "desktop_image_width": "large",
+          "gradient": "",
+          "image": "shopify://shop_images/Hee53d051ce9b4c1fad63e71a94ce9840L.webp",
+          "image_border_radius": 50,
+          "layout": "text_first",
+          "margin_bottom": 32,
+          "margin_top": 0,
+          "mobile_layout": "image_first",
+          "padding_bottom": 0,
+          "padding_top": 0
+        },
+        "type": "pp-image-with-text"
+      },
+      "pp_reviews_dqQHmw": {
+        "block_order": [
+          "review_UYYj4E",
+          "review_V7CyvK",
+          "review_Z0kjRL",
+          "review_pt5PN0",
+          "review_UayexO",
+          "review_pcN8mI",
+          "review_FRVTX7",
+          "review_AUSNsH",
+          "review_gbJSSq",
+          "review_325MmR",
+          "review_SqYPOw",
+          "review_nJQgxL",
+          "review_6WimSV"
+        ],
+        "blocks": {
+          "review_325MmR": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Chloe D.",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "The gold roller has really leveled up my skincare routine. It's fancy AF and really makes a difference in my skin texture.",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_6WimSV": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Jasmine N.",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "Okay, I've tried so many beauty gadgets but this one...omg, it's literally THE BEST! The 24K Gold Vibrating Face Lifter is such an amazing little tool. The vibration feels great on my skin after a long day, and the real gold roller feels so luxe. I've seen a massive difference in my skin's texture, tone, and firmness. Plus, I can take it into the shower because it's waterproof. It's seriously perfect for anyone wanting that effortless glow. Can't recommend it enough!!! \ud83d\ude42",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_AUSNsH": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Amber F.",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "Amazing!!!",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_FRVTX7": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Hannah T.",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "So, I saw this online and was like, why not give it a try? I don't usually write reviews, but this product deserves it. \ud83d\ude0d After a month, I can't believe the difference. My wrinkles have basically smoothed out, and even my friends noticed my skin's glow. No joke, it's like Botox minus the needles! I use it while chilling in the bath, which makes it even better. If you're on the fence about getting it, seriously, just do it. Trust me, you won't regret it!",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_SqYPOw": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Mia B.",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "Already seeing reduced puffiness. It feels like a mini massage, tbh!",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_UYYj4E": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Emily R.",
+              "image": "shopify://shop_images/A7053b9b599f1407fbcd8317126e54067G_jpg.webp",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "Love it! \ud83d\ude0a\ud83d\udc4d",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_UayexO": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Donna W.",
+              "image": "shopify://shop_images/A3e599a976ce64ddd98acfbbef6bc9319s_jpg.webp",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "OMG. I can't believe how amazing this product is. My skin feels so soft and luxurious after a week of use. Plus, it's super easy to use and feels like a spa session every time. Love the glow it's giving me.",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_V7CyvK": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Kelly M.",
+              "image": "shopify://shop_images/Aa774903120bd4ba7b2f8b4c471fbda13X_jpg.webp",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "Perfect addition to my night routine. Glowing skin!",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_Z0kjRL": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Nina L.",
+              "image": "shopify://shop_images/Adecc631f74924329a368b6864992446ab_jpg.webp",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "Was skeptical at first, but wow! I've been using this for a few weeks, and my skin feels so smooth and firm. Also loving the relaxing experience it provides.",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_gbJSSq": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Lily C.",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "Luxury and results all in one! So impressed, xD",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_nJQgxL": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Grace H.",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "I've tried numerous products to rejuvenate my skin but nothing compares to this. It's like treating yourself to a luxurious spa day every day. All in all, totally worth the price for the results.",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_pcN8mI": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Sophie G.",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "This massager is pure magic. It's become a part of my nightly ritual and has noticeably reduced the puffiness around my eyes. I'm addicted to how it makes my skin look and feel, and I love that it\u2019s waterproof. Highly recommend for that all-around youthful look.",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          },
+          "review_pt5PN0": {
+            "settings": {
+              "author_badge_color": "#2993f1",
+              "author_badge_text": "Verified Purchase",
+              "author_badge_text_color": "#000000",
+              "author_badge_text_style": "body",
+              "author_color": "#000000",
+              "author_style": "subtitle",
+              "author_text": "Laura B.",
+              "image": "shopify://shop_images/A725b87d985014fe2af9196916d3a75bf0_jpg.webp",
+              "image_border_radius": "low",
+              "review_background_color": "#ffffff",
+              "review_border_radius": "low",
+              "review_text": "It's been a game-changer for my under-eye bags. Totally recommend for anyone looking to boost their skincare game.",
+              "review_text_color": "#000000",
+              "review_text_style": "body",
+              "stars_alignment": "start",
+              "stars_color": "#facc15",
+              "stars_mobilealignment": "start",
+              "stars_number": 5,
+              "stars_size": "sm"
+            },
+            "type": "review"
+          }
+        },
+        "settings": {
+          "button_action": "scroll",
+          "button_action_scroll_element": "",
+          "button_alignment": "center",
+          "button_background_color": "#fa3a95",
+          "button_border_color": "#000000",
+          "button_border_width": 0,
+          "button_label": "",
+          "button_link": "",
+          "button_link_newtab": false,
+          "button_mobilealignment": "center",
+          "button_padding_horizontal": 15,
+          "button_padding_vertical": 15,
+          "button_rounded_corners": "medium",
+          "button_subtext": "Fast Worldwide Shipping",
+          "button_subtext_color": "#000000",
+          "button_subtext_style": "body",
+          "button_text_color": "#ffffff",
+          "button_width": "fit",
+          "gradient": "radial-gradient(rgba(255, 255, 255, 1), #fee5f2 100%)",
+          "heading": "Hear what others say about our face lifter",
+          "heading_alignment": "center",
+          "heading_color": "#000000",
+          "heading_mobilealignment": "center",
+          "heading_size": "h1",
+          "heading_stars_color": "#facc15",
+          "heading_stars_number": 5,
+          "heading_stars_size": "lg",
+          "margin_bottom": 32,
+          "margin_top": 0,
+          "padding_bottom": 32,
+          "padding_top": 32,
+          "stars_alignment": "center",
+          "stars_mobilealignment": "center",
+          "text": "<p>Rated 4.9/5 by 1,200 Happy Customers</p>",
+          "text_alignment": "center",
+          "text_color": "#000000",
+          "text_mobilealignment": "center",
+          "text_style": "subtitle"
+        },
+        "type": "pp-reviews"
+      },
+      "related-products": {
+        "disabled": true,
+        "settings": {
+          "color_scheme": "scheme-1",
+          "columns_desktop": 4,
+          "columns_mobile": "2",
+          "gradient": "",
+          "heading": "You may also like",
+          "heading_alignment": "center",
+          "heading_color": "#000000",
+          "heading_mobilealignment": "center",
+          "heading_size": "h2",
+          "image_ratio": "square",
+          "image_shape": "default",
+          "padding_bottom": 28,
+          "padding_top": 36,
+          "products_to_show": 4,
+          "show_rating": false,
+          "show_secondary_image": true,
+          "show_vendor": false
+        },
+        "type": "related-products"
+      }
+    }
+  }

@@ -1,0 +1,351 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics - Shopify Dashboard{% endblock %}
+
+{% block page_css %}
+<link href="{{ url_for('static', filename='css/pages/analytics.css') }}" rel="stylesheet">
+<style>
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .stats-card {
+        background: rgba(31, 41, 55, 0.5);
+        border: 1px solid rgba(75, 85, 99, 0.2);
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .stats-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .stats-card h3 {
+        font-size: 0.875rem;
+        color: #9CA3AF;
+        margin-bottom: 0.5rem;
+    }
+
+    .stats-card .value {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #F3F4F6;
+    }
+
+    .stats-card .label {
+        font-size: 0.875rem;
+        color: #9CA3AF;
+        margin-top: 0.25rem;
+    }
+
+    .dashboard-card {
+        background: rgba(31, 41, 55, 0.5);
+        border: 1px solid rgba(75, 85, 99, 0.2);
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .chart-container {
+        position: relative;
+        height: 300px;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <!-- Page Header -->
+    <div class="flex justify-between items-center mb-8">
+        <h1 class="text-2xl font-bold text-white">Store Analytics</h1>
+        <select id="time-range" 
+                class="bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-primary focus:border-transparent">
+            <option value="7d">Last 7 Days</option>
+            <option value="30d" selected>Last 30 Days</option>
+            <option value="90d">Last 90 Days</option>
+            <option value="1y">Last Year</option>
+        </select>
+    </div>
+
+    {% if error %}
+    <div class="error-message">
+        <p>{{ error }}</p>
+        <p class="text-sm mt-2">Please try refreshing the page or contact support if the problem persists.</p>
+    </div>
+    {% endif %}
+
+    {% if not analytics %}
+    <div class="loading-overlay rounded-lg">
+        <div class="loading-spinner"></div>
+        <p class="text-gray-400 mt-4">Loading analytics data...</p>
+    </div>
+    {% else %}
+    <!-- Overview Stats -->
+    <div class="stats-grid">
+        <!-- Orders Overview -->
+        <div class="stats-card">
+            <h3>Total Orders</h3>
+            <p class="value">{{ analytics.orders.total_orders|default(0) }}</p>
+            <p class="label">Orders in period</p>
+        </div>
+        
+        <!-- Revenue -->
+        <div class="stats-card">
+            <h3>Total Revenue</h3>
+            <p class="value">${{ analytics.orders.total_revenue|default('0.00') }}</p>
+            <p class="label">Revenue in period</p>
+        </div>
+        
+        <!-- Average Order Value -->
+        <div class="stats-card">
+            <h3>Avg Order Value</h3>
+            <p class="value">${{ analytics.orders.average_order_value|default('0.00') }}</p>
+            <p class="label">Average per order</p>
+        </div>
+        
+        <!-- Store Performance -->
+        <div class="stats-card">
+            <h3>Visitors</h3>
+            <p class="value">{{ analytics.performance.unique_visitors|default(0) }}</p>
+            <p class="label">Unique visitors</p>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Daily Orders Chart -->
+        <div class="dashboard-card">
+            <h3 class="text-lg font-semibold mb-4">Daily Orders</h3>
+            <div class="chart-container">
+                <canvas id="dailyOrdersChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Daily Revenue Chart -->
+        <div class="dashboard-card">
+            <h3 class="text-lg font-semibold mb-4">Daily Revenue</h3>
+            <div class="chart-container">
+                <canvas id="dailyRevenueChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Analytics -->
+    <div class="dashboard-card mb-8">
+        <h3 class="text-lg font-semibold mb-6">Product Analytics</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Product Types Distribution -->
+            <div>
+                <h4 class="text-md font-medium mb-4">Product Types</h4>
+                <div class="chart-container">
+                    <canvas id="productTypesChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Price Distribution -->
+            <div>
+                <h4 class="text-md font-medium mb-4">Price Ranges</h4>
+                <div class="chart-container">
+                    <canvas id="priceDistributionChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Store Performance -->
+    <div class="dashboard-card">
+        <h3 class="text-lg font-semibold mb-6">Store Performance</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Traffic Sources -->
+            <div>
+                <h4 class="text-md font-medium mb-4">Top Referrers</h4>
+                <div class="space-y-3">
+                    {% for referrer in analytics.performance.top_referrers %}
+                    <div class="flex justify-between items-center p-3 bg-gray-700 rounded-lg">
+                        <span class="text-gray-200">{{ referrer.source }}</span>
+                        <span class="text-primary font-medium">{{ referrer.visits }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Device Breakdown -->
+            <div>
+                <h4 class="text-md font-medium mb-4">Device Usage</h4>
+                <div class="chart-container">
+                    <canvas id="deviceBreakdownChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Set up Chart.js defaults
+    Chart.defaults.color = '#9CA3AF';
+    Chart.defaults.borderColor = 'rgba(75, 85, 99, 0.2)';
+    
+    // Common chart options
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    padding: 20,
+                    color: '#9CA3AF'
+                }
+            }
+        }
+    };
+
+    // Daily Orders Chart
+    const dailyOrdersConfig = {
+        type: 'line',
+        data: {
+            labels: {{ analytics.daily_metrics|map(attribute='date')|list|tojson }},
+            datasets: [{
+                label: 'Orders',
+                data: {{ analytics.daily_metrics|map(attribute='orders')|list|tojson }},
+                borderColor: '#10B981',
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: Object.assign({}, commonOptions, {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(75, 85, 99, 0.2)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        })
+    };
+    new Chart(document.getElementById('dailyOrdersChart'), dailyOrdersConfig);
+
+    // Daily Revenue Chart
+    const dailyRevenueConfig = {
+        type: 'line',
+        data: {
+            labels: {{ analytics.daily_metrics|map(attribute='date')|list|tojson }},
+            datasets: [{
+                label: 'Revenue',
+                data: {{ analytics.daily_metrics|map(attribute='revenue')|list|tojson }},
+                borderColor: '#3B82F6',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: Object.assign({}, commonOptions, {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(75, 85, 99, 0.2)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        })
+    };
+    new Chart(document.getElementById('dailyRevenueChart'), dailyRevenueConfig);
+
+    // Product Types Chart
+    const productTypesConfig = {
+        type: 'doughnut',
+        data: {
+            labels: {{ analytics.product_types|map(attribute='type')|list|tojson }},
+            datasets: [{
+                data: {{ analytics.product_types|map(attribute='count')|list|tojson }},
+                backgroundColor: [
+                    '#10B981',
+                    '#3B82F6',
+                    '#6366F1',
+                    '#8B5CF6',
+                    '#EC4899'
+                ]
+            }]
+        },
+        options: commonOptions
+    };
+    new Chart(document.getElementById('productTypesChart'), productTypesConfig);
+
+    // Price Distribution Chart
+    const priceDistributionConfig = {
+        type: 'bar',
+        data: {
+            labels: {{ analytics.price_distribution|map(attribute='range')|list|tojson }},
+            datasets: [{
+                label: 'Products',
+                data: {{ analytics.price_distribution|map(attribute='count')|list|tojson }},
+                backgroundColor: '#6366F1'
+            }]
+        },
+        options: Object.assign({}, commonOptions, {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(75, 85, 99, 0.2)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        })
+    };
+    new Chart(document.getElementById('priceDistributionChart'), priceDistributionConfig);
+
+    // Device Breakdown Chart
+    const deviceBreakdownConfig = {
+        type: 'pie',
+        data: {
+            labels: Object.keys({{ analytics.performance.device_breakdown|tojson }}),
+            datasets: [{
+                data: Object.values({{ analytics.performance.device_breakdown|tojson }}),
+                backgroundColor: [
+                    '#10B981',
+                    '#3B82F6',
+                    '#6366F1'
+                ]
+            }]
+        },
+        options: commonOptions
+    };
+    new Chart(document.getElementById('deviceBreakdownChart'), deviceBreakdownConfig);
+
+    // Time range change handler
+    document.getElementById('time-range').addEventListener('change', function(e) {
+        window.location.href = `{{ url_for('pages.analytics') }}?time_range=${e.target.value}`;
+    });
+});
+</script>
+{% endblock %} 

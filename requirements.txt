@@ -1,0 +1,10 @@
+flask==3.0.2
+flask-swagger-ui==4.11.1
+python-dotenv==1.0.1
+requests==2.31.0
+google-generativeai==0.3.2
+beautifulsoup4==4.12.3
+fake-useragent==1.4.0
+undetected-chromedriver==3.5.5
+cloudscraper==1.2.71
+selenium==4.18.1 

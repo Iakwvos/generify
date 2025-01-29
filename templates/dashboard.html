@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Shopify Dashboard{% endblock %}
+
+{% block page_css %}
+<link href="{{ url_for('static', filename='css/pages/dashboard.css') }}" rel="stylesheet">
+<style>
+    /* Hide number input spinners */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>
+{% endblock %}
+
+{% block header_content %}{% endblock %}
+
+{% block content %}
+<!-- Meta tags for config -->
+<meta name="shop-url" content="{{ config.SHOP_URL }}">
+<meta name="active-theme-id" content="{{ active_theme_id if active_theme_id else '' }}">
+
+<!-- Stats Section -->
+<div class="stats-grid">
+    <div class="stats-card">
+        <h3>Total Products</h3>
+        <p class="value" data-value="{{ store_stats.total_products }}">{{ store_stats.total_products }}</p>
+        <p class="label">Active products in store</p>
+    </div>
+    <div class="stats-card">
+        <h3>Total Themes</h3>
+        <p class="value" data-value="{{ store_stats.total_themes }}">{{ store_stats.total_themes }}</p>
+        <p class="label">Available themes</p>
+    </div>
+    <div class="stats-card">
+        <h3>Inventory Value</h3>
+        <p class="value">${{ store_stats.inventory_value }}</p>
+        <p class="label">Total value of current inventory</p>
+    </div>
+    <div class="stats-card">
+        <h3>Average Price</h3>
+        <p class="value">${{ store_stats.avg_price }}</p>
+        <p class="label">Average product price</p>
+    </div>
+</div>
+
+<!-- AI Insights -->
+<div class="dashboard-card mb-8">
+    <h2 class="text-2xl font-bold mb-4">AI Insights</h2>
+    <div id="ai-insights-container">
+        <div class="flex items-center space-x-2">
+            <div class="loading w-5 h-5"></div>
+            <p>Loading AI insights...</p>
+        </div>
+    </div>
+</div>
+
+<!-- Products Section -->
+<div class="mb-8">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold">Products</h2>
+        <button class="create-product-btn py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+            <i class="fas fa-plus mr-2"></i>Create Product
+        </button>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="bg-gray-800 p-4 rounded-lg mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Search -->
+            <div class="relative">
+                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                <input type="text" 
+                       id="product-search"
+                       placeholder="Search products..." 
+                       class="w-full pl-10 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400">
+            </div>
+            <!-- Price Range -->
+            <div class="flex space-x-2">
+                <div class="relative flex-1">
+                    <span class="absolute left-3 top-2 text-gray-400">$</span>
+                    <input type="number" 
+                           id="min-price"
+                           placeholder="Min price" 
+                           step="0.01"
+                           class="w-full pl-7 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400">
+                </div>
+                <div class="relative flex-1">
+                    <span class="absolute left-3 top-2 text-gray-400">$</span>
+                    <input type="number" 
+                           id="max-price"
+                           placeholder="Max price" 
+                           step="0.01"
+                           class="w-full pl-7 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400">
+                </div>
+            </div>
+            <!-- Template Filter -->
+            <select id="template-filter" 
+                    class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white">
+                <option value="">All Templates</option>
+                <option value="has-template">With Template</option>
+                <option value="no-template">Without Template</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid">
+        {% for product in products %}
+        <div class="dashboard-card product-card group">
+            <div class="flex flex-col h-full">
+                <div class="relative">
+                    {% if product.images and product.images|length > 0 %}
+                    <img src="{{ product.images[0].src }}" alt="{{ product.title }}" class="product-image rounded-t-lg">
+                    {% else %}
+                    <div class="product-placeholder bg-gray-700 rounded-t-lg flex items-center justify-center">
+                        <i class="fas fa-image text-4xl text-gray-400"></i>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="p-4 flex-grow flex flex-col">
+                    <div class="flex-grow">
+                        <h3 class="text-lg font-semibold mb-2">{{ product.title }}</h3>
+                        <p class="text-gray-400 text-sm mb-2">{{ product.handle }}</p>
+                        {% if product.template_suffix %}
+                        <div class="mb-3">
+                            <span class="bg-primary/20 text-primary px-2 py-1 rounded-lg text-sm font-medium">
+                                {{ product.template_suffix }}
+                            </span>
+                        </div>
+                        {% endif %}
+                        {% if product.variants and product.variants|length > 0 %}
+                        <div class="flex justify-between items-center mb-4">
+                            <p class="text-lg font-bold text-primary">${{ product.variants[0].price }}</p>
+                            <span class="text-sm text-gray-400">{{ product.variants|length }} variant(s)</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-700">
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                            <button onclick="window.open('https://{{ config.SHOP_URL }}/products/{{ product.handle }}', '_blank')" 
+                                    class="flex-1 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                                <i class="fas fa-eye mr-2"></i>
+                                Preview
+                            </button>
+                            {% if active_theme_id %}
+                            <button onclick="window.open('https://admin.shopify.com/store/' + window.config.SHOP_URL.split('.')[0] + '/themes/' + window.config.active_theme_id + '/editor?previewPath=/products/{{ product.handle }}', '_blank')"
+                                    class="flex-1 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                                <i class="fas fa-edit mr-2"></i>
+                                Edit
+                            </button>
+                            {% else %}
+                            <button onclick="alert('No active theme found. Please set an active theme in Shopify.')"
+                                    class="flex-1 py-2 px-4 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                                <i class="fas fa-edit mr-2"></i>
+                                Edit
+                            </button>
+                            {% endif %}
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="productActions.duplicate('{{ product.id }}')" 
+                                    class="flex-1 py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                                <i class="fas fa-copy mr-2"></i>
+                                Duplicate
+                            </button>
+                            <button onclick="productActions.showDeleteModal('{{ product.id }}')" 
+                                    class="flex-1 py-2 px-4 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                                <i class="fas fa-trash mr-2"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Create Product Modal -->
+<div id="createProductModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-gray-800 border border-gray-700 p-6 rounded-lg w-full max-w-lg shadow-xl">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold text-white">Create New Product</h3>
+            <button class="close-modal text-gray-400 hover:text-white">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <form id="createProductForm" class="space-y-6">
+            <!-- Basic Information -->
+            <div>
+                <label class="block text-sm font-medium mb-2 text-gray-200">Product Title*</label>
+                <input type="text" name="title" required
+                       class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400">
+            </div>
+
+            <!-- Price -->
+            <div>
+                <label class="block text-sm font-medium mb-2 text-gray-200">Price*</label>
+                <div class="relative">
+                    <span class="absolute left-3 top-2 text-gray-400">$</span>
+                    <input type="number" 
+                           name="price" 
+                           required 
+                           min="0" 
+                           step="0.01"
+                           class="w-full pl-7 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white">
+                </div>
+            </div>
+
+            <!-- Reference URL -->
+            <div>
+                <label class="block text-sm font-medium mb-2 text-gray-200">Reference URL</label>
+                <input type="url" name="url" placeholder="https://example.com/product-reference"
+                       class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400">
+            </div>
+
+            <!-- Language -->
+            <div>
+                <label class="block text-sm font-medium mb-2 text-gray-200">Language</label>
+                <select name="language" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white">
+                    <option value="en">English</option>
+                    <option value="gr">Greek</option>
+                </select>
+            </div>
+
+            <div class="flex justify-end space-x-4 mt-8 pt-4 border-t border-gray-700">
+                <button type="button" class="close-modal flex-1 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                    Cancel
+                </button>
+                <button type="submit" class="flex-1 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                    Create Product
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+<!-- Initialize ProductGrid -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    window.productGrid = new ProductGrid({
+        searchInput: '#product-search',
+        minPriceInput: '#min-price',
+        maxPriceInput: '#max-price',
+        templateFilter: '#template-filter',
+        productsContainer: '.products-grid'
+    });
+});
+</script>
+{% endblock %} 

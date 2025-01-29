@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Generify - AI-Powered Shopify Management{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00cc7a',
+                        'primary-dark': '#00a362'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Landing CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col">
+    <!-- Loading Animation -->
+    <div class="loading"></div>
+    
+    <!-- Content -->
+    {% block content %}{% endblock %}
+    
+    <!-- Component JavaScript -->
+    <script src="{{ url_for('static', filename='js/components/ProductGrid.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/ProductActions.js') }}"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    <!-- Landing JavaScript -->
+    <script src="{{ url_for('static', filename='js/landing.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 
