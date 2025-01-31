@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="api-key" content="{{ config.API_KEY if config.API_KEY else '' }}">
     <title>{% block title %}Generify - AI-Powered Shopify Management{% endblock %}</title>
     
     <!-- Favicon -->
@@ -35,7 +36,7 @@
     </script>
     
     <!-- Landing CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing/index.css') }}">
     {% block extra_css %}{% endblock %}
 </head>
 <body class="bg-gray-900 text-white min-h-screen flex flex-col">

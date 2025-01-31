@@ -1,18 +1,7 @@
 /* Analytics Page Styles */
 
 /* Stats Cards */
-.card {
-    @apply bg-gray-800 rounded-lg shadow-lg;
-    transition: transform 0.2s ease-in-out;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-}
-
-.stat-value {
-    @apply text-primary font-bold;
-}
+/* Moved to /components/cards/ */
 
 /* Charts */
 .chart-container {

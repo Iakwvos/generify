@@ -1,0 +1,97 @@
+/* Modal Component */
+/* Hide scrollbars while keeping functionality */
+* {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+    display: none;
+}
+
+/* Remove previous scrollbar styles */
+html {
+    overflow-y: auto; /* Changed from scroll to auto */
+}
+
+body.modal-open {
+    overflow: hidden;
+    /* Remove padding-right since we don't have scrollbars anymore */
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    backdrop-filter: blur(4px);
+}
+
+.modal {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    max-width: 90%;
+    width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: var(--shadow-xl);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-4);
+}
+
+.modal-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: var(--spacing-2);
+    transition: color var(--transition-base);
+}
+
+.modal-close:hover {
+    color: var(--color-text);
+}
+
+.modal-body {
+    margin-bottom: var(--spacing-6);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-6);
+}
+
+/* Animation */
+.modal-overlay {
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal {
+    animation: slideIn 0.3s ease-out;
+}
+
+@media (max-width: 640px) {
+    .modal {
+        width: 95%;
+        max-height: 95vh;
+    }
+} 

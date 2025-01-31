@@ -1,51 +1,48 @@
 <!-- Mobile Menu Button -->
-<button id="mobile-menu-button" 
-        class="lg:hidden fixed top-6 left-6 z-50 p-3 rounded-xl bg-gray-800/90 backdrop-blur-lg text-white hover:bg-gray-700/90 transition-all duration-300 shadow-lg">
+<button id="mobile-menu-button">
     <i class="fas fa-bars"></i>
 </button>
 
 <!-- Overlay -->
-<div id="sidebar-overlay" 
-     class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden hidden transition-all duration-300"></div>
+<div id="sidebar-overlay" class="hidden"></div>
 
 <!-- Sidebar -->
-<div id="sidebar" 
-     class="fixed inset-y-0 left-0 w-[280px] bg-[#1E1F25] text-white flex flex-col z-50 transform -translate-x-full lg:translate-x-0 transition-all duration-300 shadow-2xl">
+<div id="sidebar">
     <!-- Logo -->
-    <div class="p-6">
+    <div class="logo-section">
         <a href="{{ url_for('main.landing') }}" class="block group">
-            <h1 class="text-2xl font-bold text-white group-hover:text-primary transition-all duration-300 tracking-tight">
-                <span class="text-primary bg-primary/10 px-2 py-1 rounded-lg">G</span>enerify
+            <h1>
+                <span class="logo-highlight">G</span>enerify
             </h1>
         </a>
     </div>
     
     <!-- Navigation -->
-    <nav class="flex-1 px-4 py-4 overflow-y-auto">
+    <nav>
         <div class="space-y-10">
             <!-- MAIN -->
             <div>
-                <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Main</p>
+                <p class="nav-section-header">Main</p>
                 <ul class="space-y-2">
                     <li>
                         <a href="{{ url_for('main.dashboard') }}" 
-                           class="flex items-center px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300 group {% if request.endpoint == 'main.dashboard' %}bg-primary text-white{% endif %}">
-                            <i class="fas fa-home w-5 h-5 transition-transform duration-300 group-hover:scale-110"></i>
-                            <span class="ml-3">Dashboard</span>
+                           class="nav-link {% if request.endpoint in ['main.dashboard', 'pages.dashboard'] %}active{% endif %}">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url_for('main.products') }}"
-                           class="flex items-center px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300 group {% if request.endpoint == 'main.products' %}bg-primary text-white{% endif %}">
-                            <i class="fas fa-box w-5 h-5 transition-transform duration-300 group-hover:scale-110"></i>
-                            <span class="ml-3">Products</span>
+                           class="nav-link {% if request.endpoint == 'main.products' %}active{% endif %}">
+                            <i class="fas fa-box"></i>
+                            <span>Products</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url_for('pages.analytics') }}"
-                           class="flex items-center px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300 group {% if request.endpoint == 'pages.analytics' %}bg-primary text-white{% endif %}">
-                            <i class="fas fa-chart-line w-5 h-5 transition-transform duration-300 group-hover:scale-110"></i>
-                            <span class="ml-3">Analytics</span>
+                           class="nav-link {% if request.endpoint == 'pages.analytics' %}active{% endif %}">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
                         </a>
                     </li>
                 </ul>
@@ -53,20 +50,20 @@
             
             <!-- CONTENT -->
             <div>
-                <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Content</p>
+                <p class="nav-section-header">Content</p>
                 <ul class="space-y-2">
                     <li>
                         <a href="{{ url_for('main.ai_content') }}"
-                           class="flex items-center px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300 group {% if request.endpoint == 'main.ai_content' %}bg-primary text-white{% endif %}">
-                            <i class="fas fa-magic w-5 h-5 transition-transform duration-300 group-hover:scale-110"></i>
-                            <span class="ml-3">AI Content</span>
+                           class="nav-link {% if request.endpoint == 'main.ai_content' %}active{% endif %}">
+                            <i class="fas fa-magic"></i>
+                            <span>AI Content</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url_for('main.templates') }}"
-                           class="flex items-center px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300 group {% if request.endpoint == 'main.templates' %}bg-primary text-white{% endif %}">
-                            <i class="fas fa-file-alt w-5 h-5 transition-transform duration-300 group-hover:scale-110"></i>
-                            <span class="ml-3">Templates</span>
+                           class="nav-link {% if request.endpoint == 'main.templates' %}active{% endif %}">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Templates</span>
                         </a>
                     </li>
                 </ul>
@@ -74,20 +71,20 @@
             
             <!-- SETTINGS -->
             <div>
-                <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Settings</p>
+                <p class="nav-section-header">Settings</p>
                 <ul class="space-y-2">
                     <li>
                         <a href="{{ url_for('main.store_settings') }}"
-                           class="flex items-center px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300 group {% if request.endpoint == 'main.store_settings' %}bg-primary text-white{% endif %}">
-                            <i class="fas fa-store w-5 h-5 transition-transform duration-300 group-hover:scale-110"></i>
-                            <span class="ml-3">Store Settings</span>
+                           class="nav-link {% if request.endpoint == 'main.store_settings' %}active{% endif %}">
+                            <i class="fas fa-store"></i>
+                            <span>Store Settings</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url_for('main.account_settings') }}"
-                           class="flex items-center px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300 group {% if request.endpoint == 'main.account_settings' %}bg-primary text-white{% endif %}">
-                            <i class="fas fa-user-cog w-5 h-5 transition-transform duration-300 group-hover:scale-110"></i>
-                            <span class="ml-3">Account</span>
+                           class="nav-link {% if request.endpoint == 'main.account_settings' %}active{% endif %}">
+                            <i class="fas fa-user-cog"></i>
+                            <span>Account</span>
                         </a>
                     </li>
                 </ul>
@@ -96,35 +93,33 @@
     </nav>
     
     <!-- User Profile -->
-    <div class="p-4 mt-auto">
-        <div class="p-4 rounded-xl bg-white/5">
-            <div class="flex items-center space-x-3">
+    <div class="user-profile">
+        <div class="user-profile-content">
+            <div class="user-info">
                 <!-- First Letter Avatar -->
-                <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white font-medium text-lg">
+                <div class="user-avatar">
                     {{ session.get('user', {}).get('first_name', 'U')[0] | upper }}
                 </div>
-                <div class="flex-1 min-w-0">
-                    <p class="text-sm font-medium text-white truncate">
+                <div class="user-details">
+                    <p class="user-name">
                         {{ session.get('user', {}).get('first_name', '') }} {{ session.get('user', {}).get('last_name', '') }}
                     </p>
-                    <p class="text-xs text-gray-400">Store Owner</p>
+                    <p class="user-role">Store Owner</p>
                 </div>
             </div>
             
             <!-- Quick Actions -->
-            <div class="mt-4 space-y-2">
+            <div class="quick-actions">
                 <!-- Sign Out Button -->
-                <a href="{{ url_for('auth.logout') }}" 
-                   class="flex items-center px-3 py-2.5 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300 group">
-                    <i class="fas fa-sign-out-alt w-5 h-5 transition-transform duration-300 group-hover:rotate-180"></i>
-                    <span class="ml-3">Sign Out</span>
+                <a href="{{ url_for('auth.logout') }}" class="quick-action-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Sign Out</span>
                 </a>
                 
                 <!-- Help Link -->
-                <a href="{{ url_for('main.help') }}" 
-                   class="flex items-center px-3 py-2.5 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300 group">
-                    <i class="fas fa-question-circle w-5 h-5 transition-transform duration-300 group-hover:scale-110"></i>
-                    <span class="ml-3">Help Center</span>
+                <a href="{{ url_for('main.help') }}" class="quick-action-link">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Help Center</span>
                 </a>
             </div>
         </div>

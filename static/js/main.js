@@ -6,9 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
         active_theme_id: document.querySelector('meta[name="active-theme-id"]')?.content
     };
 
-    // Initialize animations
-    animations.initializeAnimations();
-    
+    // Handle loading animation
+    const loader = document.querySelector('.loading');
+    if (loader) {
+        window.addEventListener('load', () => {
+            AnimationService.fadeOut(loader);
+        });
+    }
+
     // Load AI Insights
     loadAIInsights();
 
@@ -36,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({
-                    behavior: 'smooth'
+                    behavior: 'smooth',
+                    block: 'start'
                 });
                 // Close mobile menu if open
                 if (mobileMenu) {
@@ -53,7 +59,7 @@ async function loadAIInsights() {
     if (!insightsContainer) return;
     
     try {
-        const data = await helpers.fetchData('/ai-insights');
+        const data = await APIService.loadAIInsights();
         
         if (data.insights && data.insights.length > 0) {
             // Split insights into initial and remaining

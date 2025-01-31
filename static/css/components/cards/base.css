@@ -1,0 +1,112 @@
+/* Base Card Component */
+
+/* Variables */
+:root {
+    --card-padding: var(--spacing-6);
+    --card-radius: var(--radius-lg);
+    --card-bg: var(--color-surface);
+    --card-border: var(--color-border);
+    --card-shadow: var(--shadow-lg);
+    --card-hover-transform: translateY(-2px);
+}
+
+/* Base Card */
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--card-radius);
+    border: 1px solid var(--card-border);
+    padding: var(--card-padding);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: var(--card-hover-transform);
+    box-shadow: var(--card-shadow);
+}
+
+/* Card Header */
+.card-header {
+    margin-bottom: var(--spacing-4);
+}
+
+.card-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-2);
+}
+
+.card-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+/* Card Body */
+.card-body {
+    margin-bottom: var(--spacing-4);
+}
+
+/* Card Footer */
+.card-footer {
+    margin-top: auto;
+    padding-top: var(--spacing-4);
+    border-top: 1px solid var(--card-border);
+}
+
+/* Card Loading State */
+.card.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.card.loading::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Card Sizes */
+.card.sm {
+    padding: var(--spacing-4);
+}
+
+.card.lg {
+    padding: var(--spacing-8);
+}
+
+/* Card Variants */
+.card.primary {
+    border-color: var(--color-primary);
+}
+
+.card.secondary {
+    border-color: var(--color-surface-light);
+}
+
+/* Card Grid */
+.card-grid {
+    display: grid;
+    gap: var(--spacing-6);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+} 

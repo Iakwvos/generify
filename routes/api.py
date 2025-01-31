@@ -165,6 +165,7 @@ product_variant = api.model('ProductVariant', {
 
 product = api.model('Product', {
     'id': fields.String(description='Unique product ID', example='gid://shopify/Product/123'),
+    'handle': fields.String(description='Product handle/slug', example='premium-t-shirt', default=''),
     'title': fields.String(required=True, description='Product title', example='Premium T-Shirt'),
     'description': fields.String(description='Product description in HTML', example='<p>High-quality cotton t-shirt...</p>'),
     'price': fields.Float(required=True, description='Base product price', example=29.99),

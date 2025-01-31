@@ -1,0 +1,45 @@
+/* Toast Notifications */
+.Toastify {
+    position: fixed;
+    z-index: 9999;
+}
+
+.Toastify__toast-container {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: 400px !important;
+    padding: 0 !important;
+    z-index: 9999 !important;
+    transform: none !important;
+}
+
+.Toastify__toast {
+    margin-bottom: 1rem !important;
+    border-radius: 0.5rem !important;
+    padding: 1rem !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Toast Types */
+.Toastify__toast--success {
+    border-left: 4px solid var(--primary) !important;
+}
+
+.Toastify__toast--error {
+    border-left: 4px solid #dc2626 !important;
+}
+
+.Toastify__toast--info {
+    border-left: 4px solid #2563eb !important;
+}
+
+.Toastify__toast--warning {
+    border-left: 4px solid #d97706 !important;
+} 

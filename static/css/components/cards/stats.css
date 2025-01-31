@@ -1,0 +1,111 @@
+/* Stats Card Component */
+
+/* Variables */
+:root {
+    --stats-card-value-size: var(--font-size-2xl);
+    --stats-card-label-size: var(--font-size-sm);
+    --stats-card-icon-size: 2rem;
+}
+
+/* Stats Card */
+.stats-card {
+    /* Base card styles */
+    background-color: var(--card-bg);
+    border-radius: var(--card-radius);
+    border: 1px solid var(--card-border);
+    padding: var(--card-padding);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+
+    /* Stats card specific styles */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+
+.stats-card:hover {
+    transform: var(--card-hover-transform);
+    box-shadow: var(--card-shadow);
+}
+
+/* Stats Value */
+.stats-card .value {
+    font-size: var(--stats-card-value-size);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.2;
+}
+
+/* Stats Label */
+.stats-card .label {
+    font-size: var(--stats-card-label-size);
+    color: var(--color-text-secondary);
+}
+
+/* Stats Icon */
+.stats-card .icon {
+    width: var(--stats-card-icon-size);
+    height: var(--stats-card-icon-size);
+    margin-bottom: var(--spacing-3);
+    color: var(--color-primary);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    gap: var(--spacing-6);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* Stats Card Variants */
+.stats-card.positive .value {
+    color: var(--color-primary);
+}
+
+.stats-card.negative .value {
+    color: #EF4444;  /* red-500 */
+}
+
+.stats-card.neutral .value {
+    color: #F59E0B;  /* amber-500 */
+}
+
+/* Stats Card with Trend */
+.stats-card .trend {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-2);
+}
+
+.stats-card .trend.up {
+    color: var(--color-primary);
+}
+
+.stats-card .trend.down {
+    color: #EF4444;  /* red-500 */
+}
+
+.stats-card .trend i {
+    font-size: var(--font-size-base);
+}
+
+/* Stats Card Loading State */
+.stats-card.loading .value {
+    background: linear-gradient(90deg, var(--color-surface-light) 25%, var(--color-surface) 50%, var(--color-surface-light) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    color: transparent;
+}
+
+@media (max-width: 640px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-card .value {
+        font-size: calc(var(--stats-card-value-size) * 0.9);
+    }
+} 

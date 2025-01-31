@@ -1,0 +1,35 @@
+/* Header Search Component */
+.header-search {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: var(--radius-lg);
+    padding: 0.5rem 1rem;
+    width: 300px;
+    transition: all var(--transition-base);
+}
+
+.header-search input {
+    background: none;
+    border: none;
+    color: var(--text);
+    width: 100%;
+    margin-left: 0.5rem;
+    font-size: var(--font-size-sm);
+}
+
+.header-search input:focus {
+    outline: none;
+}
+
+.header-search:focus-within {
+    background-color: rgba(255,255,255,0.15);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header-search {
+        width: 200px;
+    }
+} 

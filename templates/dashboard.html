@@ -111,7 +111,7 @@
     <!-- Products Grid -->
     <div class="products-grid">
         {% for product in products %}
-        <div class="dashboard-card product-card group">
+        <div class="dashboard-card product-card group" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
             <div class="flex flex-col h-full">
                 <div class="relative">
                     {% if product.images and product.images|length > 0 %}
@@ -142,33 +142,29 @@
                     </div>
                     <div class="mt-4 pt-4 border-t border-gray-700">
                         <div class="grid grid-cols-2 gap-2 mb-2">
-                            <button onclick="window.open('https://{{ config.SHOP_URL }}/products/{{ product.handle }}', '_blank')" 
-                                    class="flex-1 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                            <button class="preview-btn flex-1 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
                                 <i class="fas fa-eye mr-2"></i>
                                 Preview
                             </button>
                             {% if active_theme_id %}
-                            <button onclick="window.open('https://admin.shopify.com/store/' + window.config.SHOP_URL.split('.')[0] + '/themes/' + window.config.active_theme_id + '/editor?previewPath=/products/{{ product.handle }}', '_blank')"
-                                    class="flex-1 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                            <button class="edit-btn flex-1 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
                                 <i class="fas fa-edit mr-2"></i>
                                 Edit
                             </button>
                             {% else %}
-                            <button onclick="alert('No active theme found. Please set an active theme in Shopify.')"
-                                    class="flex-1 py-2 px-4 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                            <button disabled
+                                    class="flex-1 py-2 px-4 bg-gray-400 text-white rounded-lg flex items-center justify-center text-sm cursor-not-allowed">
                                 <i class="fas fa-edit mr-2"></i>
                                 Edit
                             </button>
                             {% endif %}
                         </div>
                         <div class="grid grid-cols-2 gap-2">
-                            <button onclick="productActions.duplicate('{{ product.id }}')" 
-                                    class="flex-1 py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                            <button class="duplicate-btn flex-1 py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
                                 <i class="fas fa-copy mr-2"></i>
                                 Duplicate
                             </button>
-                            <button onclick="productActions.showDeleteModal('{{ product.id }}')" 
-                                    class="flex-1 py-2 px-4 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                            <button class="delete-btn flex-1 py-2 px-4 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
                                 <i class="fas fa-trash mr-2"></i>
                                 Delete
                             </button>
@@ -182,76 +178,105 @@
 </div>
 
 <!-- Create Product Modal -->
-<div id="createProductModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-    <div class="bg-gray-800 border border-gray-700 p-6 rounded-lg w-full max-w-lg shadow-xl">
-        <div class="flex justify-between items-center mb-6">
-            <h3 class="text-xl font-bold text-white">Create New Product</h3>
-            <button class="close-modal text-gray-400 hover:text-white">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <form id="createProductForm" class="space-y-6">
-            <!-- Basic Information -->
-            <div>
-                <label class="block text-sm font-medium mb-2 text-gray-200">Product Title*</label>
-                <input type="text" name="title" required
-                       class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400">
+<div id="createProductModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+    <div class="modal-content-wrapper items-center justify-center h-full flex">
+        <div class="bg-gray-800 border border-gray-700 p-6 rounded-lg w-full max-w-lg shadow-xl relative">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-white">Create New Product</h3>
+                <button type="button" class="modal-close-x text-gray-400 hover:text-white p-2 rounded-lg transition-colors duration-200 z-[60] cursor-pointer">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-
-            <!-- Price -->
-            <div>
-                <label class="block text-sm font-medium mb-2 text-gray-200">Price*</label>
-                <div class="relative">
-                    <span class="absolute left-3 top-2 text-gray-400">$</span>
-                    <input type="number" 
-                           name="price" 
-                           required 
-                           min="0" 
-                           step="0.01"
-                           class="w-full pl-7 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white">
+            <form id="createProductForm" class="space-y-6">
+                <!-- Basic Information -->
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-gray-200">Product Title*</label>
+                    <input type="text" name="title" required
+                           class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400">
                 </div>
-            </div>
 
-            <!-- Reference URL -->
-            <div>
-                <label class="block text-sm font-medium mb-2 text-gray-200">Reference URL</label>
-                <input type="url" name="url" placeholder="https://example.com/product-reference"
-                       class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400">
-            </div>
+                <!-- Price -->
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-gray-200">Price*</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-2 text-gray-400">$</span>
+                        <input type="number" 
+                               name="price" 
+                               required 
+                               min="0" 
+                               step="0.01"
+                               class="w-full pl-7 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white">
+                    </div>
+                </div>
 
-            <!-- Language -->
-            <div>
-                <label class="block text-sm font-medium mb-2 text-gray-200">Language</label>
-                <select name="language" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white">
-                    <option value="en">English</option>
-                    <option value="gr">Greek</option>
-                </select>
-            </div>
+                <!-- Reference URL -->
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-gray-200">Reference URL</label>
+                    <input type="url" name="url" placeholder="https://example.com/product-reference"
+                           class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400">
+                </div>
 
-            <div class="flex justify-end space-x-4 mt-8 pt-4 border-t border-gray-700">
-                <button type="button" class="close-modal flex-1 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
-                    Cancel
-                </button>
-                <button type="submit" class="flex-1 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
-                    Create Product
-                </button>
-            </div>
-        </form>
+                <!-- Language -->
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-gray-200">Language</label>
+                    <select name="language" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white">
+                        <option value="en">English</option>
+                        <option value="el">Greek</option>
+                        <option value="pl">Polish</option>
+                    </select>
+                </div>
+
+                <div class="flex justify-end space-x-4 mt-8 pt-4 border-t border-gray-700">
+                    <button type="button" class="modal-close-cancel flex-1 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm z-[60]">
+                        <i class="fas fa-times mr-2"></i>
+                        Cancel
+                    </button>
+                    <button type="submit" class="flex-1 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
+                        Create Product
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
 
 {% block page_scripts %}
-<!-- Initialize ProductGrid -->
+<!-- Initialize Components -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    window.productGrid = new ProductGrid({
-        searchInput: '#product-search',
-        minPriceInput: '#min-price',
-        maxPriceInput: '#max-price',
-        templateFilter: '#template-filter',
-        productsContainer: '.products-grid'
-    });
+    // Initialize ProductGrid
+    if (!window.productGrid) {
+        window.productGrid = new ProductGrid();
+        
+        // Add event listeners for filters
+        const searchInput = document.getElementById('product-search');
+        const minPriceInput = document.getElementById('min-price');
+        const maxPriceInput = document.getElementById('max-price');
+        const templateFilter = document.getElementById('template-filter');
+
+        [searchInput, minPriceInput, maxPriceInput, templateFilter].forEach(input => {
+            if (input) {
+                const debouncedFilter = HelperUtils.debounce(() => window.productGrid.filterProducts(), 300);
+                input.addEventListener('change', debouncedFilter);
+                input.addEventListener('keyup', debouncedFilter);
+            }
+        });
+    }
+
+    // Initialize ProductForm
+    if (!window.productForm) {
+        window.productForm = new ProductForm();
+    }
+
+    // Update create product button to use new ProductForm
+    const createBtn = document.querySelector('.create-product-btn');
+    if (createBtn) {
+        createBtn.addEventListener('click', () => window.productForm.show());
+    }
+
+    // Initialize stats animations
+    AnimationService.initializeStatsAnimations();
 });
 </script>
 {% endblock %} 

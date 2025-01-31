@@ -76,6 +76,7 @@ class ShopifyService:
         # Process each product to ensure required fields
         for product in products:
             # Ensure required fields have default values
+            product['handle'] = product.get('handle', self._generate_handle(product.get('title', 'untitled')))
             product['vendor'] = product.get('vendor', '')
             product['product_type'] = product.get('product_type', '')
             product['status'] = product.get('status', 'active')
@@ -860,3 +861,28 @@ class ShopifyService:
             product['conversion_rate'] = 0  # Requires additional data from Shopify Analytics API
         
         return top_products[:10]  # Return top 10 products 
+
+    def _generate_handle(self, title):
+        """Generate a URL-friendly handle from a title
+        
+        Args:
+            title (str): Product title
+            
+        Returns:
+            str: URL-friendly handle
+        """
+        # Convert to lowercase and replace spaces with hyphens
+        handle = title.lower().replace(' ', '-')
+        
+        # Remove special characters
+        handle = ''.join(c for c in handle if c.isalnum() or c == '-')
+        
+        # Remove multiple consecutive hyphens
+        while '--' in handle:
+            handle = handle.replace('--', '-')
+        
+        # Remove leading/trailing hyphens
+        handle = handle.strip('-')
+        
+        # If empty, return a default
+        return handle if handle else 'untitled-product' 

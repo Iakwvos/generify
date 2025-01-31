@@ -1,0 +1,12 @@
+/* AI Insights Component */
+.ai-insights {
+    @apply space-y-4;
+}
+
+.ai-insights p {
+    @apply text-gray-600 dark:text-gray-300 leading-relaxed;
+}
+
+.ai-insights .insight-icon {
+    @apply text-primary text-lg mr-2;
+} 

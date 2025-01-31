@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loading = document.querySelector('.loading');
     if (loading) {
         setTimeout(() => {
-            loading.style.opacity = '0';
-            setTimeout(() => loading.remove(), 500);
+            AnimationService.fadeOut(loading);
         }, 1000);
     }
 

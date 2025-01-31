@@ -1,0 +1,31 @@
+/* Action Buttons */
+.action-button {
+    @apply flex items-center px-4 py-2 rounded-lg border 
+           text-sm font-medium transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.action-button-duplicate {
+    @apply text-blue-600 border-blue-300 bg-blue-50 
+           hover:bg-blue-100 hover:border-blue-400
+           dark:text-blue-400 dark:border-blue-500 dark:bg-blue-900/20
+           dark:hover:bg-blue-900/30 dark:hover:border-blue-400;
+}
+
+.action-button-delete {
+    @apply text-red-600 border-red-300 bg-red-50
+           hover:bg-red-100 hover:border-red-400
+           dark:text-red-400 dark:border-red-500 dark:bg-red-900/20
+           dark:hover:bg-red-900/30 dark:hover:border-red-400;
+}
+
+.action-button:hover {
+    @apply transform -translate-y-0.5;
+}
+
+/* Show More Button */
+#show-more-btn {
+    @apply inline-flex items-center justify-center px-4 py-2 
+           text-sm font-medium text-primary hover:text-primary-dark
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary;
+} 
