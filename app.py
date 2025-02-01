@@ -15,7 +15,7 @@ import jinja2
 import logging
 import traceback
 import redis
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Configure logging
 logging.basicConfig(
@@ -27,6 +27,53 @@ logger = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv()
+
+# Custom Jinja2 filters
+def number_format(value):
+    """Format a number with thousands separator."""
+    try:
+        return "{:,}".format(float(value))
+    except (ValueError, TypeError):
+        return value
+
+def timeago(value):
+    """Format a datetime into a 'time ago' string."""
+    if not value:
+        return ''
+    
+    if isinstance(value, str):
+        try:
+            value = datetime.fromisoformat(value.replace('Z', '+00:00'))
+        except ValueError:
+            return value
+
+    now = datetime.now(timezone.utc)
+    if not value.tzinfo:
+        value = value.replace(tzinfo=timezone.utc)
+
+    diff = now - value
+    
+    seconds = diff.total_seconds()
+    if seconds < 60:
+        return 'just now'
+    elif seconds < 3600:
+        minutes = int(seconds / 60)
+        return f'{minutes} minute{"s" if minutes != 1 else ""} ago'
+    elif seconds < 86400:
+        hours = int(seconds / 3600)
+        return f'{hours} hour{"s" if hours != 1 else ""} ago'
+    elif seconds < 604800:
+        days = int(seconds / 86400)
+        return f'{days} day{"s" if days != 1 else ""} ago'
+    elif seconds < 2592000:
+        weeks = int(seconds / 604800)
+        return f'{weeks} week{"s" if weeks != 1 else ""} ago'
+    elif seconds < 31536000:
+        months = int(seconds / 2592000)
+        return f'{months} month{"s" if months != 1 else ""} ago'
+    else:
+        years = int(seconds / 31536000)
+        return f'{years} year{"s" if years != 1 else ""} ago'
 
 def check_required_env_vars():
     required_vars = [
@@ -93,6 +140,10 @@ def create_app():
     check_required_env_vars()
     
     app = Flask(__name__)
+    
+    # Register custom filters
+    app.jinja_env.filters['number_format'] = number_format
+    app.jinja_env.filters['timeago'] = timeago
     
     # Register blueprints
     app.register_blueprint(api_bp, url_prefix='/api')

@@ -515,6 +515,7 @@ class ProductGrid {
         // Bind events for existing cards
         if (this.container) {
             this.bindCardEvents();
+            this.bindFilterEvents();
         }
     }
 
@@ -556,9 +557,18 @@ class ProductGrid {
             const productId = card.dataset.productId;
             const productHandle = card.dataset.productHandle;
 
+            // Product handle link
+            const handleLink = card.querySelector('.meta');
+            if (handleLink) {
+                handleLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.open(`https://${window.config.SHOP_URL}/products/${productHandle}`, '_blank', 'noopener');
+                });
+            }
+
             // Preview button
             card.querySelector('.preview-btn')?.addEventListener('click', () => {
-                window.open(`https://${window.config.SHOP_URL}/products/${productHandle}`, '_blank');
+                window.open(`https://${window.config.SHOP_URL}/products/${productHandle}`, '_blank', 'noopener');
             });
 
             // Edit button
@@ -578,6 +588,65 @@ class ProductGrid {
         });
     }
 
+    bindFilterEvents() {
+        // Add event listeners for filters
+        [this.searchInput, this.minPriceInput, this.maxPriceInput, this.templateFilter].forEach(input => {
+            if (input) {
+                input.addEventListener('input', () => this.filterProducts());
+                input.addEventListener('change', () => this.filterProducts());
+            }
+        });
+    }
+
+    filterProducts() {
+        const searchTerm = this.searchInput?.value.toLowerCase() || '';
+        const minPrice = this.minPriceInput?.value ? parseFloat(this.minPriceInput.value) : 0;
+        const maxPrice = this.maxPriceInput?.value ? parseFloat(this.maxPriceInput.value) : Infinity;
+        const templateFilter = this.templateFilter?.value || '';
+
+        const productCards = this.container?.querySelectorAll('.product-card');
+        if (!productCards) return;
+
+        productCards.forEach(card => {
+            let show = true;
+
+            // Title search filter
+            const title = card.querySelector('.title')?.textContent.toLowerCase() || '';
+            const handle = card.querySelector('.meta')?.textContent.toLowerCase() || '';
+            if (searchTerm && !title.includes(searchTerm) && !handle.includes(searchTerm)) {
+                show = false;
+            }
+
+            // Price filter
+            const priceEl = card.querySelector('.price')?.textContent || '';
+            const price = parseFloat(priceEl.replace('$', '')) || 0;
+            if (price < minPrice || price > maxPrice) {
+                show = false;
+            }
+
+            // Template filter
+            const hasTemplate = card.querySelector('.template-badge') !== null;
+            if (templateFilter === 'has-template' && !hasTemplate) {
+                show = false;
+            } else if (templateFilter === 'no-template' && hasTemplate) {
+                show = false;
+            }
+
+            // Show/hide card with animation
+            if (show) {
+                card.style.display = 'flex';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+    }
+
     renderProductCard(product) {
         // Validate product object
         if (!product || typeof product !== 'object') {
@@ -593,95 +662,112 @@ class ProductGrid {
             template_suffix: product.template_suffix || '',
             variants: Array.isArray(product.variants) ? product.variants : [],
             images: Array.isArray(product.images) ? product.images : [],
-            status: product.status || 'draft'
+            status: product.status || 'draft',
+            updated_at: product.updated_at || new Date().toISOString()
         };
 
-        // Log handle-related information for debugging
-        if (!product.handle) {
-            console.warn(`Product missing handle, generated from title: ${safeProduct.handle}`, {
-                productId: safeProduct.id,
-                title: safeProduct.title
-            });
-        }
-
-        // Price handling
-        const price = safeProduct.variants.length > 0 && safeProduct.variants[0].price 
-            ? parseFloat(safeProduct.variants[0].price).toFixed(2)
-            : '0.00';
-
-        // Image handling
-        const imageSection = safeProduct.images.length > 0
-            ? `<img src="${safeProduct.images[0].src}" alt="${safeProduct.title}" class="product-image rounded-t-lg">`
-            : `<div class="product-placeholder bg-gray-700 rounded-t-lg flex items-center justify-center h-48">
-                <i class="fas fa-image text-4xl text-gray-400"></i>
-               </div>`;
-
-        // Template badge
-        const templateBadge = safeProduct.template_suffix
-            ? `<div class="mb-3">
-                <span class="bg-primary/20 text-primary px-2 py-1 rounded-lg text-sm font-medium">
-                    ${safeProduct.template_suffix}
-                </span>
-               </div>`
-            : '';
-
-        // Price and variants section
-        const priceSection = safeProduct.variants.length > 0
-            ? `<div class="flex justify-between items-center mb-4">
-                <p class="text-lg font-bold text-primary">$${price}</p>
-                <span class="text-sm text-gray-400">${safeProduct.variants.length} variant(s)</span>
-               </div>`
-            : `<div class="flex justify-between items-center mb-4">
-                <p class="text-lg font-bold text-gray-400">No price set</p>
-                <span class="text-sm text-gray-400">No variants</span>
-               </div>`;
+        // Image section with status badge
+        const imageSection = `
+            <div class="image-container">
+                ${safeProduct.images.length > 0 
+                    ? `<img src="${safeProduct.images[0].src}" alt="${safeProduct.title}" class="image">`
+                    : `<div class="product-placeholder">
+                        <i class="fas fa-image text-4xl text-gray-400"></i>
+                       </div>`
+                }
+            </div>`;
 
         return `
-            <div class="dashboard-card product-card group" data-product-id="${safeProduct.id}" data-product-handle="${safeProduct.handle}">
-                <div class="flex flex-col h-full">
-                    <div class="relative">
-                        ${imageSection}
+            <div class="product-card" data-product-id="${safeProduct.id}" data-product-handle="${safeProduct.handle}">
+                ${this._renderStatusBadge(safeProduct.status)}
+                ${imageSection}
+                <div class="content">
+                    <h3 class="title">${safeProduct.title}</h3>
+                    <a href="https://${window.config.SHOP_URL}/products/${safeProduct.handle}" 
+                       class="meta" 
+                       target="_blank"
+                       title="View product page">
+                        <i class="fas fa-link text-sm mr-1"></i>
+                        ${safeProduct.handle}
+                    </a>
+                    ${safeProduct.template_suffix ? `
+                        <div class="template-badge">
+                            <span class="bg-primary/20 text-primary px-2 py-1 rounded-lg text-sm font-medium">
+                                ${safeProduct.template_suffix}
+                            </span>
+                        </div>` : ''
+                    }
+                    <div class="last-updated">
+                        <i class="far fa-clock mr-1"></i>
+                        Updated ${this._formatDate(safeProduct.updated_at)}
                     </div>
-                    <div class="p-4 flex-grow flex flex-col">
-                        <div class="flex-grow">
-                            <h3 class="text-lg font-semibold mb-2">${safeProduct.title}</h3>
-                            <p class="text-gray-400 text-sm mb-2">${safeProduct.handle}</p>
-                            ${templateBadge}
-                            ${priceSection}
+                    <div class="flex justify-between items-center">
+                        <p class="price">
+                            ${safeProduct.variants.length > 0 
+                                ? `$${parseFloat(safeProduct.variants[0].price).toFixed(2)}`
+                                : 'No price set'
+                            }
+                        </p>
+                        <span class="text-sm text-gray-400">
+                            ${safeProduct.variants.length} variant(s)
+                        </span>
+                    </div>
+                    <div class="actions border-t border-gray-700 mt-4 pt-4">
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                            <button class="preview-btn flex items-center justify-center py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200 text-sm">
+                                <i class="fas fa-eye mr-2"></i>
+                                Preview
+                            </button>
+                            <button class="edit-btn flex items-center justify-center py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-200 text-sm">
+                                <i class="fas fa-edit mr-2"></i>
+                                Edit
+                            </button>
                         </div>
-                        <div class="mt-4 pt-4 border-t border-gray-700">
-                            <div class="grid grid-cols-2 gap-2 mb-2">
-                                <button class="preview-btn flex-1 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
-                                    <i class="fas fa-eye mr-2"></i>
-                                    Preview
-                                </button>
-                                ${window.config.active_theme_id 
-                                    ? `<button class="edit-btn flex-1 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
-                                        <i class="fas fa-edit mr-2"></i>
-                                        Edit
-                                       </button>`
-                                    : `<button disabled
-                                            class="flex-1 py-2 px-4 bg-gray-400 text-white rounded-lg flex items-center justify-center text-sm cursor-not-allowed">
-                                        <i class="fas fa-edit mr-2"></i>
-                                        Edit
-                                       </button>`
-                                }
-                            </div>
-                            <div class="grid grid-cols-2 gap-2">
-                                <button class="duplicate-btn flex-1 py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
-                                    <i class="fas fa-copy mr-2"></i>
-                                    Duplicate
-                                </button>
-                                <button class="delete-btn flex-1 py-2 px-4 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm">
-                                    <i class="fas fa-trash mr-2"></i>
-                                    Delete
-                                </button>
-                            </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="duplicate-btn flex items-center justify-center py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200 text-sm">
+                                <i class="fas fa-copy mr-2"></i>
+                                Duplicate
+                            </button>
+                            <button class="delete-btn flex items-center justify-center py-2 px-4 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200 text-sm">
+                                <i class="fas fa-trash mr-2"></i>
+                                Delete
+                            </button>
                         </div>
                     </div>
                 </div>
-            </div>
-        `;
+            </div>`;
+    }
+
+    _renderStatusBadge(status) {
+        const statusMap = {
+            active: { icon: 'check-circle', text: 'Active' },
+            draft: { icon: 'pencil-alt', text: 'Draft' },
+            archived: { icon: 'archive', text: 'Archived' }
+        };
+
+        const statusInfo = statusMap[status] || statusMap.draft;
+        return `
+            <div class="status-badge ${status}" title="${statusInfo.text} product">
+                <i class="fas fa-${statusInfo.icon}"></i>
+                ${statusInfo.text}
+            </div>`;
+    }
+
+    _formatDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffTime = Math.abs(now - date);
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        
+        if (diffDays === 0) {
+            return 'Today';
+        } else if (diffDays === 1) {
+            return 'Yesterday';
+        } else if (diffDays < 7) {
+            return `${diffDays} days ago`;
+        } else {
+            return date.toLocaleDateString();
+        }
     }
 
     _generateHandle(title) {
@@ -699,44 +785,6 @@ class ProductGrid {
         
         // If empty, return a default
         return handle || 'untitled-product';
-    }
-
-    filterProducts() {
-        const searchTerm = this.searchInput?.value.toLowerCase();
-        const minPrice = this.minPriceInput?.value ? parseFloat(this.minPriceInput.value) : 0;
-        const maxPrice = this.maxPriceInput?.value ? parseFloat(this.maxPriceInput.value) : Infinity;
-        const templateFilter = this.templateFilter?.value;
-
-        const productCards = this.container?.querySelectorAll('.product-card');
-        if (!productCards) return;
-
-        productCards.forEach(card => {
-            const title = card.querySelector('h3')?.textContent.toLowerCase();
-            const priceEl = card.querySelector('.product-price');
-            const price = priceEl ? parseFloat(priceEl.textContent.replace('$', '')) : 0;
-            const hasTemplate = card.querySelector('.template-badge') !== null;
-
-            let show = true;
-
-            // Apply search filter
-            if (searchTerm && !title?.includes(searchTerm)) {
-                show = false;
-            }
-
-            // Apply price filter
-            if (price < minPrice || price > maxPrice) {
-                show = false;
-            }
-
-            // Apply template filter
-            if (templateFilter === 'has-template' && !hasTemplate) {
-                show = false;
-            } else if (templateFilter === 'no-template' && hasTemplate) {
-                show = false;
-            }
-
-            card.style.display = show ? 'block' : 'none';
-        });
     }
 
     editProduct(handle) {

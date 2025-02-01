@@ -21,6 +21,19 @@
     
     --color-border: rgba(75, 85, 99, 0.2);
     --color-hover: rgba(255, 255, 255, 0.05);
+
+    /* Status Colors */
+    --color-success: #10B981;
+    --color-success-light: rgba(16, 185, 129, 0.1);
+    --color-success-rgb: 16, 185, 129;
+    
+    --color-warning: #F59E0B;
+    --color-warning-light: rgba(245, 158, 11, 0.1);
+    --color-warning-rgb: 245, 158, 11;
+    
+    --color-error: #EF4444;
+    --color-error-light: rgba(239, 68, 68, 0.1);
+    --color-error-rgb: 239, 68, 68;
     
     /* Typography */
     --font-family: 'Inter', sans-serif;
@@ -72,6 +85,7 @@
     --radius-base: 0.5rem;
     --radius-lg: 0.75rem;
     --radius-xl: 1rem;
+    --radius-full: 9999px;
     
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);

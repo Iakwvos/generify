@@ -27,26 +27,129 @@
 /* Products Grid */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.product-card {
-    position: relative;
-    overflow: hidden;
-    animation: fadeIn 0.5s ease-out;
-}
-
-.product-image, .product-placeholder {
-    height: 240px;
-    object-fit: cover;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     width: 100%;
+    gap: var(--spacing-6);
 }
 
-.product-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+@media (min-width: 1280px) {
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Product Card */
+.product-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-border);
+    position: relative;
+}
+
+.product-card .image-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    position: relative;
+    background: var(--color-surface-light);
+}
+
+.product-card .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-card .content {
+    flex: 1;
+    padding: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+}
+
+/* Status Bubble */
+.product-card .status-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-card .status-badge.active {
+    background: rgba(16, 185, 129, 0.15);
+    color: rgb(16, 185, 129);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.product-card .status-badge.draft {
+    background: rgba(245, 158, 11, 0.15);
+    color: rgb(245, 158, 11);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.product-card .status-badge.archived {
+    background: rgba(239, 68, 68, 0.15);
+    color: rgb(239, 68, 68);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Clickable Handle */
+.product-card .meta {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.product-card .meta:hover {
+    color: var(--color-primary);
+}
+
+.product-card .meta i {
+    transition: transform 0.2s ease;
+}
+
+.product-card .meta:hover i {
+    transform: translateX(3px);
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Product Actions */
